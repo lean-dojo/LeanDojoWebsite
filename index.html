@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LeanDojo: Theorem Proving with Retrieval-Augmented Language Models</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/academicons.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <!--
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+    -->
+</head>
+<body>
+
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">LeanDojo: Theorem Proving with Retrieval-Augmented Language Models</h1>
+                    <!-- <h3 class="title is-4 conference-authors"><a target="_blank" href="https://icml.cc/">ICML 2023</a></h3> -->
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">
+                            <a target="_blank" href="https://yangky11.github.io/">Kaiyu&#160;Yang</a> <a href="mailto:kaiyuy@caltech.edu"><i class="fas fa-envelope"></i></a><sup>1</sup>,
+                            <a target="_blank" href="https://aidanswope.com/about">Aidan&#160;Swope</a><sup>2</sup>,
+                            <a target="_blank"
+                            href="https://minimario.github.io/">Alex&#160;Gu</a><sup>3</sup>,
+                            <a target="_blank" href="https://rchalamala.github.io/">Rahul&#160;Chalamala</a><sup>1</sup>,
+                            <a target="_blank" href="https://www.linkedin.com/in/peiyang-song-3279b3251/">Peiyang&#160;Song</a><sup>4</sup>,
+                            <a target="_blank"
+                            href="https://billysx.github.io/">Shixing&#160;Yu</a><sup>5</sup>,
+                            <br>
+                            <a target="_blank" href="https://www.linkedin.com/in/saad-godil-9728353/">Saad&#160;Godil</a><sup>2</sup>,
+                            <a target="_blank" href="https://www.linkedin.com/in/ryan-prenger-18797ba1/">Ryan&#160;Prenger</a><sup>2</sup>,
+                            <a target="_blank" href="http://tensorlab.cms.caltech.edu/users/anima/">Anima&#160;Anandkumar</a><sup>1 2</sup>
+                
+                        </span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>Caltech; </span>
+                        <span class="author-block"><sup>2</sup>NVIDIA; </span>
+                        <span class="author-block"><sup>3</sup>MIT; </span>
+                        <span class="author-block"><sup>4</sup>UC Santa Barbara; </span>
+                        <span class="author-block"><sup>5</sup>UT Austin </span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><i class="fas fa-envelope"></i> Correspondence to: kaiyuy@caltech.edu</span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">           
+                            <span class="link-block">
+                                <a target="_blank" href="#"
+                                class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="ai ai-arxiv"></i>
+                                </span>
+                                <span>arXiv</span>
+                                </a>
+                            </span>
+
+                            <span class="link-block">
+                            <a target="_blank" href="https://github.com/lean-dojo"
+                            class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fab fa-github"></i>
+                            </span>
+                            <span>Code</span>
+                            </a>
+
+                            <span class="link-block">
+                                <a target="_blank" href="https://leandojo.readthedocs.io/en/latest/index.html"
+                                class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fas fa-book"></i>
+                                </span>
+                                <span>Docs</span>
+                            </a>
+
+                            <a target="_blank" href="https://github.com/lean-dojo/ReProver"
+                            class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fa fa-network-wired"></i>
+                            </span>
+                            <span>Models</span>
+                            </a>
+
+                            <a target="_blank" href="https://zenodo.org/record/8016386"
+                            class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fas fa-database"></i>
+                            </span>
+                            <span>Dataset (Lean 3)</span>
+                            </a>
+
+                            <a target="_blank" href="https://zenodo.org/record/8040110"
+                            class="external-link button is-normal is-rounded is-dark">
+                            <span class="icon">
+                                <i class="fas fa-database"></i>
+                            </span>
+                            <span>Dataset (Lean 4)</span>
+                            </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+<section class="hero is-light is-small">
+    <div class="hero-body">
+        <div class="container">
+            <div id="results-carousel" class="carousel results-carousel">
+                <div class="item item-sweep_without_exceeding">
+                    <video poster="" id="sweep_without_exceeding" autoplay controls muted loop height="100%"
+                           playbackRate=2.0>
+                        <source src="assets/videos/demos/visual_constraint_satisfaction/sweep_without_exceeding/1.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-sweep_without_touching">
+                    <video poster="" id="sweep_without_touching" autoplay controls muted loop height="100%"
+                           playbackRate=2.0>
+                        <source src="assets/videos/demos/visual_goal_reaching/rearrange_then_restore/1.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-rotate">
+                    <video poster="" id="rotate" autoplay controls muted loop height="100%">
+                        <source src="assets/videos/demos/one_shot_video_imitation/follow_motion/1.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-scene_understanding">
+                    <video poster="" id="scene_understanding" autoplay controls muted loop height="100%">
+                        <source src="assets/videos/demos/novel_concept_grounding/twist/1.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-simple_manipulation">
+                    <video poster="" id="simple_manipulation" autoplay controls muted loop height="100%">
+                        <source src="assets/videos/demos/visual_reasoning/manipulate_old_neighbor/1.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-novel_adj">
+                    <video poster="" id="novel_adj" autoplay controls muted loop height="100%">
+                        <source src="assets/videos/demos/one_shot_video_imitation/follow_order/1.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-novel_adj_and_noun">
+                    <video poster="" id="novel_adj_and_noun" autoplay controls muted loop height="100%">
+                        <source src="assets/videos/demos/simple_object_manipulation/scene_understanding/1.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-novel_noun">
+                    <video poster="" id="novel_noun" autoplay controls muted loop height="100%">
+                        <source src="assets/videos/demos/visual_constraint_satisfaction/sweep_without_touching/1.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-twist">
+                    <video poster="" id="twist" autoplay controls muted loop height="100%">
+                        <source src="assets/videos/demos/novel_concept_grounding/novel_adj/1.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-follow_motion">
+                    <video poster="" id="follow_motion" autoplay controls muted loop height="100%">
+                        <source src="assets/videos/demos/simple_object_manipulation/simple_manipulation/1.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-follow_order">
+                    <video poster="" id="follow_order" autoplay controls muted loop height="100%">
+                        <source src="assets/videos/demos/visual_goal_reaching/rearrange/1.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-rearrange">
+                    <video poster="" id="rearrange" autoplay controls muted loop height="100%">
+                        <source src="assets/videos/demos/simple_object_manipulation/rotate/1.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-manipulate_old_neighbor">
+                    <video poster="" id="manipulate_old_neighbor" autoplay controls muted loop height="100%">
+                        <source src="assets/videos/demos/visual_reasoning/same_color/1.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-pick_in_order_then_restore">
+                    <video poster="" id="pick_in_order_then_restore" autoplay controls muted loop height="100%">
+                        <source src="assets/videos/demos/visual_reasoning/pick_in_order_then_restore/1.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-same_color">
+                    <video poster="" id="same_color" autoplay controls muted loop height="100%">
+                        <source src="assets/videos/demos/novel_concept_grounding/novel_noun/1.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-rearrange_then_restore">
+                    <video poster="" id="rearrange_then_restore" autoplay controls muted loop height="100%">
+                        <source src="assets/videos/demos/visual_reasoning/same_profile/1.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-same_profile">
+                    <video poster="" id="same_profile" autoplay controls muted loop height="100%">
+                        <source src="assets/videos/demos/novel_concept_grounding/novel_adj_and_noun/1.mp4"
+                                type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+-->
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <img src="images/LeanDojo.jpg" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto"/>
+                    <br /> 
+                    <p style="font-size: 125%"><b>Top right</b>: LeanDojo extracts proofs in <a target="_blank" href="https://leanprover.github.io/">Lean</a> into datasets for training machine learning models. It also enables the trained model to prove theorems by interacting with Lean's proof environment.</p>
+                    <br />  
+                    <p style="font-size: 125%"><b>Top left</b>: The proof tree of a Lean theorem <a target="_blank" href="https://github.com/leanprover-community/lean/blob/cce7990ea86a78bdb383e38ed7f9b5ba93c60ce0/library/init/data/nat/gcd.lean#L36">\(\forall n \in \mathbb{N},~\texttt{gcd n n = n}\)</a>, where <span style="background-color:rgb(222, 235, 247);">\(\texttt{gcd}\)</span> is the greatest common divisor. When proving the theorem, we start from the original theorem as the initial state (the root) and repeatedly apply tactics (the edges) to decompose states into simpler sub-states, until all states are solved (the leaf nodes). Tactics may rely on premises such as <span style="background-color:rgb(251, 229, 214);">\(\texttt{mod_self}\)</span> and  <span style="background-color:rgb(226, 240, 217);">\(\texttt{gcd_zero_left}\)</span> defined in a large math library. E.g., <span style="background-color:rgb(251, 229, 214);">\(\texttt{mod_self}\)</span> is an existing theorem <a target="_blank" href="https://github.com/leanprover-community/lean/blob/cce7990ea86a78bdb383e38ed7f9b5ba93c60ce0/library/init/data/nat/lemmas.lean#L861">\(\forall n \in \mathbb{N},~\texttt{n % n = 0}\)</a> used in the proof to simplify the goal.</p>
+                    <br />
+                    <p style="font-size: 125%"><b>Bottom</b>: Our ReProver model. Given a state, it retrieves premises from the math library, which are concatenated with the state and fed into an encoder-decoder Transformer to generate the next tactic.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                    <p style="font-size: 125%">
+                        Large language models (LLMs) have shown promise in proving formal theorems using proof assistants such as Lean. 
+                        However, existing methods are difficult to reproduce or build on, due to private code, data, and large compute 
+                        requirements. This has created substantial barriers to research on machine learning methods for theorem proving. 
+                        This paper removes these barriers by introducing <em>LeanDojo</em>: an open-source Lean playground consisting of toolkits, 
+                        data, models, and benchmarks. LeanDojo extracts data from Lean and enables interaction with the proof environment programmatically. 
+                        It contains fine-grained annotations of premises in proofs, providing valuable data for <em>premise selection</em>&mdash;
+                        a key bottleneck in theorem proving. Using this data, we develop <em>ReProver</em> (<u>Re</u>trieval-Augmented <u>Prover</u>): 
+                        the first LLM-based prover that is augmented with retrieval for selecting premises from a vast math library. 
+                        It is inexpensive and needs only one GPU week of training. Our retriever leverages LeanDojo's program analysis 
+                        capability to identify accessible premises and hard negative examples, which makes retrieval much more effective. 
+                        Furthermore, we construct a new benchmark consisting of 96,962 theorems and proofs extracted from Lean's math library. 
+                        It features challenging data split requiring the prover to generalize to theorems relying on novel premises that are never 
+                        used in training. We use this benchmark for training and evaluation, and experimental results demonstrate the effectiveness 
+                        of ReProver over non-retrieval baselines and GPT-4. <b>We thus provide the first set of open-source LLM-based theorem provers without 
+                        any proprietary datasets and release it under a permissive MIT license to facilitate further research.</b>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Benchmarks</span></h2>
+                    <p style="font-size: 125%">
+                        <ul style="font-size: 125%; padding-left: 5%">
+                            <li><a href="https://doi.org/10.5281/zenodo.8016386"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.8016386.svg" alt="DOI"></a> <b>LeanDojo Benchmark</b>: 96,962 theorems/proofs, 212,787 tactics, and 128,163 premises extracted from <a target="_blank" href="https://github.com/leanprover-community/mathlib/tree/8c1b484d6a214e059531e22f1be9898ed6c1fd47">mathlib</a>.</li>
+                            <li><a href="https://doi.org/10.5281/zenodo.8040110"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.8040110.svg" alt="DOI"></a> <b>LeanDojo Benchmark 4</b>: 91,766 theorems/proofs and 177,349 tactics extracted from <a target="_blank" href="https://github.com/leanprover-community/mathlib4/tree/5a919533f110b7d76410134a237ee374f24eaaad">mathlib4</a>. Premise information will be available soon.</li>
+                        </ul>
+                    </p>
+                    <br />
+                    <p style="font-size: 125%">LeanDojo can extract data from any GitHub repos in Lean (supporting both Lean 3 and Lean 4). The data contains rich information not directly visible in the raw Lean code, including file dependencies, abstract syntax trees (ASTs), proof states, tactics, and premises.</p>
+                    <br />
+                    <p style="font-size: 125%"><b>Key feature 1: Premise information</b>: LeanDojo Benchmark contains fine-grained annotations of premises (where they are used in proofs and where they are defined in the library), providing valuable data for premise selection&mdash;a key bottleneck in theorem proving.</p>
+                    <br />
+                    <p style="font-size: 125%"><b>Key feature 2: Challenging data split</b>: Splitting theorems randomly into training/testing leads to overestimated performance. LLMs can prove seemingly difficult theorems simply by memorizing the proofs of similar theorems during training. We mitigate this issue by designing challenging data split requiring the model to generalize to theorems relying on novel premises that are never used in training.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Interacting with Lean</span></h2>
+                    <img src="images/interaction.jpg" width="50%" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto"/>
+                    <p style="font-size: 125%">LeanDojo turns Lean into a <a target="_blank" href="https://github.com/openai/gym">gym-like</a> environment, in which the prover can observe the proof state, run tactics to change the state, and receive feedback on errors or on proof completion. This environment is indispensable for evaluating/deploying the prover or training it through RL.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">LeanDojo Benchmark</span></h2>
+                
+                    <img src="images/quaternion.jpg" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">ReProver: Retrieval-Augmented Theorem Prover</span></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+-->
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Experiments</span></h2>
+                    <img src="images/results.png" width="40%" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto"/>
+                    <br />
+                    <p style="font-size: 125%">We use LeanDojo Benchmark to train and evaluate ReProver. During testing, the tactic generator is combined with best-first search to search for complete proofs. The table shows the percentage of theorem proved within 10 minutes. The \(\texttt{novel_premises}\) spilt is much more challenging than the \(\texttt{random}\) split. On both data splits, ReProver outperforms Lean's built-in proof automation tactic (tidy), a baseline that generates tactics directly without retrieval, and another baseline using GPT-4 to generate tactics in a zero-shot manner.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Discovering New Proofs and Uncovering Formalization Bugs</span></h2>
+                    <p style="font-size: 125%">We evaluate ReProver on theorems in miniF2F and ProofNet. It discovers <a target="_blank" href="https://github.com/facebookresearch/miniF2F/pull/13">33 proofs in miniF2F</a> and <a target="_blank" href="https://github.com/zhangir-azerbayev/ProofNet/pull/14">39 proofs in ProofNet</a> of theorems that did not have existing proofs in Lean. Our proofs have helped ProofNet uncover multiple bugs in the formalization of theorem statements.</p>
+                    <!--
+                    <img src="images/minif2f.jpg" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto"/>
+                    <br />
+                    <span style="font-size: 110%"><b>Example new proofs discovered on miniF2F.</b> </span>
+
+                    <img src="images/proofnet.jpg" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto"/>
+                    <br />
+                    <span style="font-size: 110%"><b>Example new proofs discovered on ProofNet.</b> </span>
+
+                    <img src="images/proofnet_retrieval.jpg" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto"/>
+                    <br />
+                    <span style="font-size: 110%"><b>Three new proofs discovered on ProofNet that cannot be found without premise retrieval.</b> </span>
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">ChatGPT for Theorem Proving</span></h2>
+                    <div class="columns">
+                        <div class="column has-text-left video-column">
+                            <video controls muted width="100%">
+                                <source src="images/chatgpt-1.mp4" type="video/mp4">
+                            </video>
+                            <div align="center">
+                                <a target="_blank" href="https://github.com/yangky11/lean-example/blob/5a0360e49946815cb53132638ccdd46fb1859e2a/src/example.lean#L3">\(a + b + c = a + c + b\)</a>
+                            </div>
+                        </div>
+
+                        <div class="column has-text-left video-column">
+                            <video controls muted width="100%">
+                                <source src="images/chatgpt-2.mp4" type="video/mp4">
+                            </video>
+                            <div align="center">
+                                <a target="_blank" href="https://github.com/leanprover-community/mathlib/blob/8c1b484d6a214e059531e22f1be9898ed6c1fd47/src/analysis/special_functions/stirling.lean#L249">Stirling’s formula</a>
+                            </div>
+                        </div>
+
+                        <div class="column has-text-left video-column">
+                            <video controls muted width="100%">
+                                <source src="images/chatgpt-3.mp4" type="video/mp4">
+                            </video>
+                            <div align="center">
+                                <a target="_blank" href="https://github.com/leanprover-community/mathlib/blob/8c1b484d6a214e059531e22f1be9898ed6c1fd47/src/algebra/big_operators/intervals.lean#L195">Gauss' summation formula</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <p style="font-size: 125%">We build a <a target="_blank" href="https://github.com/lean-dojo/LeanDojoChatGPT">LeanDojo ChatGPT plugin</a> that enables ChatGPT to prove theorems by interacting with Lean. Compared to specialized LLMs finetuned for theorem proving (e.g., ReProver), ChatGPT can interleave informal mathematics with formal proof steps, similar to how humans interact with proof assistants. It can explain error messages from Lean and is more steerable (by prompting engineering) than specialized provers. However, it struggles to find correct proofs in most cases, due to weakness in search and planning.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">VIMA: Visuomotor Attention Agent</span></h2>
+                    <video poster="" autoplay controls muted loop height="100%">
+                        <source src="assets/videos/vima_arch_animation.mp4"
+                                type="video/mp4">
+                    </video>
+                    <br>
+                    <span style="font-size: 110%">
+<span style="font-weight: bold">VIMA architecture.</span> We encode the multimodal prompts with a pre-trained T5 model, and condition the robot controller on the prompt through cross-attention layers. The controller is a causal transformer decoder consisting of alternating self and cross attention layers that predicts motor commands conditioned on prompts and interaction history.</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span
+                            class="dvima">VIMA-Bench: Benchmark for Multimodal Robot Learning</span></h2>
+                    <span style="font-size: 125%">
+                        We provide 17 representative tasks with multimodal prompt templates, which can be procedurally instantiated into thousands of individual instances by various combinations of textures and tabletop objects.
+                    </span>
+
+                    <br>
+                    <br>
+                    <br>
+
+                    <div class="columns">
+                        <div class="column has-text-left">
+                            <h3 class="title is-5">Simple Object Manipulation</h3>
+                            <div class="select is-medium">
+                                <select id="simple-object-manipulation-menu-tasks"
+                                        onchange="updateDemoVideo('simple-object-manipulation')">
+                                    <option value="simple_manipulation" selected="selected">Visual Manipulation</option>
+                                    <option value="rotate">Rotate</option>
+                                    <option value="scene_understanding">Scene Understanding</option>
+                                </select>
+                            </div>
+                            <div class="select is-medium">
+                                <select id="simple-object-manipulation-menu-instances"
+                                        onchange="updateDemoVideo('simple-object-manipulation')">
+                                    <option value="1" selected="selected">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <video id="simple-object-manipulation-single-task-video"
+                                   controls
+                                   muted
+                                   autoplay
+                                   loop
+                                   width="100%">
+                                <source src="assets/videos/demos/simple_object_manipulation/simple_manipulation/1.mp4"
+                                        type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="column has-text-left">
+                            <h3 class="title is-5">Visual Goal Reaching</h3>
+                            <div class="select is-medium">
+                                <select id="visual-goal-reaching-menu-tasks"
+                                        onchange="updateDemoVideo('visual-goal-reaching')">
+                                    <option value="rearrange" selected="selected">Rearrange</option>
+                                    <option value="rearrange_then_restore">Rearrange Then Restore</option>
+                                </select>
+                            </div>
+                            <div class="select is-medium">
+                                <select id="visual-goal-reaching-menu-instances"
+                                        onchange="updateDemoVideo('visual-goal-reaching')">
+                                    <option value="1" selected="selected">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <video id="visual-goal-reaching-single-task-video"
+                                   controls
+                                   muted
+                                   autoplay
+                                   loop
+                                   width="100%">
+                                <source src="assets/videos/demos/visual_goal_reaching/rearrange/1.mp4"
+                                        type="video/mp4">
+                            </video>
+                        </div>
+
+
+                    </div>
+
+                    <br>
+                    <div class="columns">
+                        <div class="column has-text-left">
+                            <h3 class="title is-5">Novel Concept Grounding</h3>
+                            <div class="select is-medium">
+                                <select id="novel-concept-grounding-menu-tasks"
+                                        onchange="updateDemoVideo('novel-concept-grounding')">
+                                    <option value="novel_adj_and_noun" selected="selected">Novel Adjective and Noun
+                                    </option>
+                                    <option value="novel_adj">Novel Adjective</option>
+                                    <option value="novel_noun">Novel Noun</option>
+                                    <option value="twist">Twist</option>
+                                </select>
+                            </div>
+                            <div class="select is-medium">
+                                <select id="novel-concept-grounding-menu-instances"
+                                        onchange="updateDemoVideo('novel-concept-grounding')">
+                                    <option value="1" selected="selected">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <video id="novel-concept-grounding-single-task-video"
+                                   controls
+                                   muted
+                                   autoplay
+                                   loop
+                                   width="100%">
+                                <source src="assets/videos/demos/novel_concept_grounding/novel_adj_and_noun/1.mp4"
+                                        type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="column has-text-left">
+                            <h3 class="title is-5">One-shot Video Imitation</h3>
+                            <div class="select is-medium">
+                                <select id="one-shot-video-imitation-menu-tasks"
+                                        onchange="updateDemoVideo('one-shot-video-imitation')">
+                                    <option value="follow_motion" selected="selected">Follow Motion</option>
+                                    <option value="follow_order">Follow Order</option>
+                                </select>
+                            </div>
+                            <div class="select is-medium">
+                                <select id="one-shot-video-imitation-menu-instances"
+                                        onchange="updateDemoVideo('one-shot-video-imitation')">
+                                    <option value="1" selected="selected">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <video id="one-shot-video-imitation-single-task-video"
+                                   controls
+                                   muted
+                                   autoplay
+                                   loop
+                                   width="100%">
+                                <source src="assets/videos/demos/one_shot_video_imitation/follow_motion/1.mp4"
+                                        type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="columns">
+                        <div class="column has-text-left">
+                            <h3 class="title is-5">Visual Constraint Satisfaction</h3>
+                            <div class="select is-medium">
+                                <select id="visual-constraint-satisfaction-menu-tasks"
+                                        onchange="updateDemoVideo('visual-constraint-satisfaction')">
+                                    <option value="sweep_without_exceeding" selected="selected">Sweep without
+                                        Exceeding
+                                    </option>
+                                    <option value="sweep_without_touching">Sweep without Touching</option>
+                                </select>
+                            </div>
+                            <div class="select is-medium">
+                                <select id="visual-constraint-satisfaction-menu-instances"
+                                        onchange="updateDemoVideo('visual-constraint-satisfaction')">
+                                    <option value="1" selected="selected">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <video id="visual-constraint-satisfaction-single-task-video"
+                                   controls
+                                   muted
+                                   autoplay
+                                   loop
+                                   playbackRate="2.0"
+                                   width="100%">
+                                <source src="assets/videos/demos/visual_constraint_satisfaction/sweep_without_exceeding/1.mp4"
+                                        type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="column has-text-left">
+                            <h3 class="title is-5">Visual Reasoning</h3>
+                            <div class="select is-medium">
+                                <select id="visual-reasoning-menu-tasks" onchange="updateDemoVideo('visual-reasoning')">
+                                    <option value="manipulate_old_neighbor" selected="selected">Manipulate Old
+                                        Neighbor
+                                    </option>
+                                    <option value="pick_in_order_then_restore">Pick in Order Then Restore</option>
+                                    <option value="same_color">Same Texture</option>
+                                    <option value="same_profile">Same Shape</option>
+                                </select>
+                            </div>
+                            <div class="select is-medium">
+                                <select id="visual-reasoning-menu-instances"
+                                        onchange="updateDemoVideo('visual-reasoning')">
+                                    <option value="1" selected="selected">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <video id="visual-reasoning-single-task-video"
+                                   controls
+                                   muted
+                                   autoplay
+                                   loop
+                                   width="100%">
+                                <source src="assets/videos/demos/visual_reasoning/manipulate_old_neighbor/1.mp4"
+                                        type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span
+                            class="dvima">Experiments</span></h2>
+
+                    <p style="font-size: 125%">
+                        We answer three main questions during experiments:
+                    <ul style="font-size: 125%; padding-left: 5%">
+                        <li>
+                            1. What is the best recipe for building multi-task transformer-based robot agents with
+                            multimodal prompts?
+                        </li>
+                        <li>
+                            2. What are the <span style="font-weight: bold">scaling properties</span> of our approach in
+                            model capacity and data size?
+                        </li>
+                        <li>
+                            3. How do different components, such as visual tokenizers, prompt conditioning, and prompt
+                            encoding, affect robot performance?
+                        </li>
+
+                    </ul>
+                    </p>
+                    <br>
+                    <br>
+
+                    <h3 class="title is-4"><span
+                            class="dvima">Evaluation Results</span></h3>
+
+                    <img src="assets/images/scalability.png" class="interpolation-image"
+                         alt="" style="display: block; margin-left: auto; margin-right: auto"/>
+                    <br>
+                    <span style="font-size: 110%">
+                        <span style="font-weight: bold">Scaling model and data.</span> <i>Top</i>: We compare performance of different methods with model sizes ranging from 2M to 200M parameters. Across all model sizes and generalization levels, VIMA outperforms baseline variants. <i>Bottom</i>: For a fixed model size of 92M parameters we compare the effect of imitation learning dataset size with 0.1%, 1%, 10%, and full data. VIMA is extremely sample efficient and can achieve performance comparable to other methods with 10x less data.
+                    </span>
+                    <br>
+                    <br>
+                    <br>
+
+                    <h3 class="title is-4"><span
+                            class="dvima">Ablation Studies </span></h3>
+
+                    <br>
+
+                    <img src="assets/images/ablation_input_process.png" class="interpolation-image"
+                         alt="" style="display: block; margin-left: auto; margin-right: auto"/>
+                    <br>
+                    <span style="font-size: 110%">
+                        <span style="font-weight: bold">Ablation on visual tokenizers.</span> We compare the performance of VIMA-200M model across different visual tokenizers. Our proposed object tokens outperform all methods that learn directly from raw pixels, and <i>Object Perceiver</i> that downsamples the object sequence to a fixed number of tokens.
+                    </span>
+
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                    <img src="assets/images/global_seq_mod.png" class="interpolation-image"
+                         alt="" style="display: block; margin-left: auto; margin-right: auto"/>
+                    <br>
+                    <span style="font-size: 110%">
+                        <span style="font-weight: bold">Ablation on prompt conditioning.</span> We compare our method (<i>xattn</i>: cross-attention prompt conditioning) with a vanilla transformer decoder (<i>gpt-decoder</i>) across different model sizes. Cross-attention is especially helpful in low-parameter regime and for harder generalization tasks.
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span
+                            class="dvima">Conclusion</span></h2>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+-->
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Team</span></h2>
+                    <div class="columns" style="max-width: 95%; padding-left: 10%;">
+                        <div class="column has-text-centered video-column">
+                            <a href="https://yangky11.github.io/" target="_blank" style="border-bottom: none;">
+                                <span class="image" style="padding-left: 10%;"><img src="images/Kaiyu.jpg" alt="" style="width: 90%;" /></span>
+                                <span style="font-weight: bold;">Kaiyu Yang</span>
+                            </a>
+                        </div>
+
+                        <div class="column has-text-centered video-column">
+                            <a href="https://aidanswope.com/about" target="_blank" style="border-bottom: none;">
+                                <span class="image" style="padding-left: 10%;"><img src="images/Aidan.jpg" alt="" style="width: 90%;" /></span>
+                                <span style="font-weight: bold;">Aidan Swope</span>
+                            </a>
+                        </div>
+
+                        <div class="column has-text-centered video-column">
+                            <a href="https://minimario.github.io/" target="_blank" style="border-bottom: none;">
+                                <span class="image" style="padding-left: 10%;"><img src="images/Alex.jpg" alt="" style="width: 90%;" /></span>
+                                <span style="font-weight: bold;">Alex Gu</span>
+                            </a>
+                        </div>
+
+                        <div class="column has-text-centered video-column">
+                            <a href="https://rchalamala.github.io/" target="_blank" style="border-bottom: none;">
+                                <span class="image" style="padding-left: 10%;"><img src="images/Rahul.jpg" alt="" style="width: 90%;" /></span>
+                                <span style="font-weight: bold;">Rahul Chalamala</span>
+                            </a>
+                        </div>
+
+                        <div class="column has-text-centered video-column">
+                            <a href="https://www.linkedin.com/in/peiyang-song-3279b3251/" target="_blank" style="border-bottom: none;">
+                                <span class="image" style="padding-left: 10%;"><img src="images/Peiyang.jpg" alt="" style="width: 90%;" /></span>
+                                <span style="font-weight: bold;">Peiyang Song</span>
+                            </a>
+                        </div>
+
+                    </div>
+                    <br />
+                    <div class="columns" style="max-width: 80%; padding-left: 10%;">
+
+                        <div class="column has-text-centered video-column">
+                            <a href="https://billysx.github.io/" target="_blank" style="border-bottom: none;">
+                                <span class="image" style="padding-left: 10%;"><img src="images/Shixing.jpg" alt="" style="width: 90%;" /></span>
+                                <span style="font-weight: bold;">Shixing Yu</span>
+                            </a>
+                        </div>
+
+                        <div class="column has-text-centered video-column">
+                            <a href="https://www.linkedin.com/in/saad-godil-9728353/" target="_blank" style="border-bottom: none;">
+                                <span class="image" style="padding-left: 10%;"><img src="images/Saad.jpg" alt="" style="width: 90%;" /></span>
+                                <span style="font-weight: bold;">Saad Godil</span>
+                            </a>
+                        </div>
+
+                        <div class="column has-text-centered video-column">
+                            <a href="https://www.linkedin.com/in/ryan-prenger-18797ba1/" target="_blank" style="border-bottom: none;">
+                                <span class="image" style="padding-left: 10%;"><img src="images/Ryan.jpg" alt="" style="width: 90%;" /></span>
+                                <span style="font-weight: bold;">Ryan Prenger</span>
+                            </a>
+                        </div>
+
+                        <div class="column has-text-centered video-column">
+                            <a href="http://tensorlab.cms.caltech.edu/users/anima/" target="_blank" style="border-bottom: none;">
+                                <span class="image" style="padding-left: 10%;"><img src="images/Anima.jpg" alt="" style="width: 90%;" /></span>
+                                <span style="font-weight: bold;">Anima Anandkumar</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+    
+<section class="section" id="BibTeX">
+    <div class="container is-max-widescreen content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@article{yang2023leandojo,
+    title={{LeanDojo}: Theorem Proving with Retrieval-Augmented Language Models},
+    author={Yang, Kaiyu and Swope, Aidan and Gu, Alex and Chalamala, Rahul and Song, Peiyang and Yu, Shixing and Godil, Saad and Prenger, Ryan and Anandkumar, Anima},
+    journal={arXiv preprint arXiv:xxxx.xxxxx},
+    year={2023}
+}</code></pre>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="content has-text-centered">
+                    <p>
+                        Website template borrowed from <a
+                            href="https://vimalabs.github.io/">VIMA</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
