@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LeanDojo: Theorem Proving with Retrieval-Augmented Language Models</title>
+    <title>AI-Driven Formal Theorem Proving in the Lean Ecosystem</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -29,65 +29,78 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="./static/js/fontawesome.all.min.js"></script>
-    <!--
-    <script src="./static/js/bulma-carousel.min.js"></script>
-    <script src="./static/js/bulma-slider.min.js"></script>
-    <script src="./static/js/index.js"></script>
-    -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get all "navbar-burger" elements
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            
+            // Check if there are any navbar burgers
+            if ($navbarBurgers.length > 0) {
+                // Add a click event on each of them
+                $navbarBurgers.forEach( el => {
+                    el.addEventListener('click', () => {
+                        // Get the target from the "data-target" attribute
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        
+                        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+        });
+    </script>
 </head>
 <body>
 
+<!-- Navigation -->
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+            <strong>LeanDojo</strong>
+        </a>
+        
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item is-active" href="index.html">
+                Home
+            </a>
+            <a class="navbar-item" href="leandojo.html">
+                LeanDojo
+            </a>
+            <a class="navbar-item" href="leanagent.html">
+                LeanAgent
+            </a>
+            <a class="navbar-item" href="leancopilot.html">
+                LeanCopilot
+            </a>
+            <a class="navbar-item" href="leanprogress.html">
+                LeanProgress
+            </a>
+            <a class="navbar-item" href="leanide.html">
+                LeanIDE
+            </a>
+        </div>
+    </div>
+</nav>
 
 <section class="hero">
     <div class="hero-body">
         <div class="container is-max-desktop">
             <div class="columns is-centered">
                 <div class="column has-text-centered">
-                    <h1 class="title is-1 publication-title">LeanDojo: Theorem Proving in Lean using Language Models</h1>
-<!--                     <h3 class="title is-4 conference-authors"><a target="_blank" href="https://nips.cc/">NeurIPS 2023 (Datasets and Benchmarks Track), Oral presentation</a></h3> -->
-                    <!--
-                    <div class="is-size-5 publication-authors">
-                        <span class="author-block">
-                            <a target="_blank" href="https://yangky11.github.io/">Kaiyu&#160;Yang</a> <a href="mailto:kaiyuy@caltech.edu"><i class="fas fa-envelope"></i></a><sup>1</sup>,
-                            <a target="_blank" href="https://aidanswope.com/about">Aidan&#160;Swope</a><sup>2</sup>,
-                            <a target="_blank"
-                            href="https://minimario.github.io/">Alex&#160;Gu</a><sup>3</sup>,
-                            <a target="_blank" href="https://rchalamala.github.io/">Rahul&#160;Chalamala</a><sup>1</sup>,
-                            <a target="_blank" href="https://peiyang-song.github.io/">Peiyang&#160;Song</a><sup>4</sup>,
-                            <a target="_blank"
-                            href="https://billysx.github.io/">Shixing&#160;Yu</a><sup>5</sup>,
-                            <br>
-                            <a target="_blank" href="https://www.linkedin.com/in/saad-godil-9728353/">Saad&#160;Godil</a><sup>2</sup>,
-                            <a target="_blank" href="https://www.linkedin.com/in/ryan-prenger-18797ba1/">Ryan&#160;Prenger</a><sup>2</sup>,
-                            <a target="_blank" href="http://tensorlab.cms.caltech.edu/users/anima/">Anima&#160;Anandkumar</a><sup>1 2</sup>
-                
-                        </span>
-                    </div>
-
-                    <div class="is-size-5 publication-authors">
-                        <span class="author-block"><sup>1</sup>Caltech; </span>
-                        <span class="author-block"><sup>2</sup>NVIDIA; </span>
-                        <span class="author-block"><sup>3</sup>MIT; </span>
-                        <span class="author-block"><sup>4</sup>UC Santa Barbara; </span>
-                        <span class="author-block"><sup>5</sup>UT Austin </span>
-                    </div>
-
-                    <div class="is-size-5 publication-authors">
-                        <span class="author-block"><i class="fas fa-envelope"></i> Correspondence to: kaiyuy@caltech.edu</span>
-                    </div>
-                    -->
+                    <h1 class="title is-1 publication-title">AI-Driven Formal Theorem Proving</h1>
 
                     <div class="column has-text-centered">
                         <div class="publication-links">           
-                            <span class="link-block">
-                                <a target="_blank" href="https://arxiv.org/abs/2306.15626"
-                                class="external-link button is-normal is-rounded is-dark">
-                                <span class="icon">
-                                    <i class="ai ai-arxiv"></i>
-                                </span>
-                                <span>arXiv</span>
-                                </a>
-                            </span>
 
                             <span class="link-block">
                             <a target="_blank" href="https://github.com/lean-dojo"
@@ -130,16 +143,6 @@
                             </span>
                             <span>Dataset (Lean 4)</span>
                             </a>
-                            </span>
-
-                            <a target="_blank" href="https://github.com/lean-dojo/LeanCopilot"
-                            class="external-link button is-normal is-rounded is-dark">
-                            <span class="icon">
-                                <i class="fas fa-wrench"></i>
-                            </span>
-                            <span>Lean Copilot</span>
-                            </a>
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -148,93 +151,13 @@
     </div>
 </section>
 
-
 <section class="section">
     <div class="container is-max-widescreen">
         <div class="rows">
             <div class="rows is-centered ">
                 <div class="row is-full-width">
-                    <h2 class="title is-3"><span class="lean-infer">LLMs as Copilots for Theorem Proving</span></h2>
-                    <video controls>
-            		  <source src="images/Lean Copilot demo.mp4" type="video/mp4">
-            		  Your browser does not support HTML video.
-            		</video>
-                    <br />
-                    <p style="font-size: 125%">We introduce <a target="_blank" href="https://github.com/lean-dojo/LeanCopilot">Lean Copilot</a> for LLMs to act as copilots in Lean for proof automation, e.g., suggesting tactics/premises and searching for proofs. Users can use our model or bring their own models that run either locally (w/ or w/o GPUs) or on the cloud.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    
-<section class="section">
-    <div class="container is-max-widescreen">
-        <div class="rows">
-            <div class="rows is-centered">
-                <div class="row is-full-width">
-                    <h2 class="title is-3"><span class="lean-infer">Overview of LeanDojo</span></h2>
-                    <img src="images/LeanDojo.jpg" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto"/>
-                    <br /> 
-                    <p style="font-size: 125%"><b>Top right</b>: LeanDojo extracts proofs in <a target="_blank" href="https://leanprover.github.io/">Lean</a> into datasets for training machine learning models. It also enables the trained model to prove theorems by interacting with Lean's proof environment.</p>
-                    <br />  
-                    <p style="font-size: 125%"><b>Top left</b>: The proof tree of a Lean theorem <a target="_blank" href="https://github.com/leanprover-community/lean/blob/cce7990ea86a78bdb383e38ed7f9b5ba93c60ce0/library/init/data/nat/gcd.lean#L36">\(\forall n \in \mathbb{N},~\texttt{gcd n n = n}\)</a>, where <span style="background-color:rgb(222, 235, 247);">\(\texttt{gcd}\)</span> is the greatest common divisor. When proving the theorem, we start from the original theorem as the initial state (the root) and repeatedly apply tactics (the edges) to decompose states into simpler sub-states, until all states are solved (the leaf nodes). Tactics may rely on premises such as <span style="background-color:rgb(251, 229, 214);">\(\texttt{mod_self}\)</span> and  <span style="background-color:rgb(226, 240, 217);">\(\texttt{gcd_zero_left}\)</span> defined in a large math library. E.g., <span style="background-color:rgb(251, 229, 214);">\(\texttt{mod_self}\)</span> is an existing theorem <a target="_blank" href="https://github.com/leanprover-community/lean/blob/cce7990ea86a78bdb383e38ed7f9b5ba93c60ce0/library/init/data/nat/lemmas.lean#L861">\(\forall n \in \mathbb{N},~\texttt{n % n = 0}\)</a> used in the proof to simplify the goal.</p>
-                    <br />
-                    <p style="font-size: 125%"><b>Bottom</b>: Our ReProver model. Given a state, it retrieves premises from the math library, which are concatenated with the state and fed into an encoder-decoder Transformer to generate the next tactic.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--
-<section class="section">
-    <div class="container is-max-desktop">
-        <div class="columns is-centered has-text-centered">
-            <div class="column">
-                <h2 class="title is-3">Abstract</h2>
-                <div class="content has-text-justified">
-                    <p style="font-size: 125%">
-                        Large language models (LLMs) have shown promise in proving formal theorems using proof assistants such as Lean. 
-                        However, existing methods are difficult to reproduce or build on, due to private code, data, and large compute 
-                        requirements. This has created substantial barriers to research on machine learning methods for theorem proving. 
-                        This paper removes these barriers by introducing <em>LeanDojo</em>: an open-source Lean playground consisting of toolkits, 
-                        data, models, and benchmarks. LeanDojo extracts data from Lean and enables interaction with the proof environment programmatically. 
-                        It contains fine-grained annotations of premises in proofs, providing valuable data for <em>premise selection</em>&mdash;
-                        a key bottleneck in theorem proving. Using this data, we develop <em>ReProver</em> (<u>Re</u>trieval-Augmented <u>Prover</u>): 
-                        an LLM-based prover that is augmented with retrieval for selecting premises from a vast math library. 
-                        It is inexpensive and needs only one GPU week of training. Our retriever leverages LeanDojo's program analysis 
-                        capability to identify accessible premises and hard negative examples, which makes retrieval much more effective. 
-                        Furthermore, we construct a new benchmark consisting of 98,641 theorems and proofs extracted from Lean's math library. 
-                        It features challenging data split requiring the prover to generalize to theorems relying on novel premises that are never 
-                        used in training. We use this benchmark for training and evaluation, and experimental results demonstrate the effectiveness 
-                        of ReProver over non-retrieval baselines and GPT-4. <b>We thus provide the first set of open-source LLM-based theorem provers without 
-                        any proprietary datasets and release it under a permissive MIT license to facilitate further research.</b>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
--->
-
-
-<section class="section">
-    <div class="container is-max-widescreen">
-        <div class="rows">
-            <div class="rows is-centered ">
-                <div class="row is-full-width">
-                    <h2 class="title is-3"><span class="dvima">Benchmarks</span></h2>
-                    <p style="font-size: 125%">
-                        <ul style="font-size: 125%; padding-left: 5%">
-                            <li><a href="https://doi.org/10.5281/zenodo.8016385"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.8016385.svg" alt="DOI"></a> <b>LeanDojo Benchmark</b>: 98,734 theorems/proofs, 217,776 tactics, and 130,262 premises from <a target="_blank" href="https://github.com/leanprover-community/mathlib/tree/19c869efa56bbb8b500f2724c0b77261edbfa28c">mathlib</a>.</li>
-                            <li><a href="https://doi.org/10.5281/zenodo.8040109"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.8040109.svg" alt="DOI"></a> <b>LeanDojo Benchmark 4</b>: 122,517 theorems/proofs, 259,580 tactics, and 167,779 premises from <a target="_blank" href="https://github.com/leanprover-community/mathlib4/tree/29dcec074de168ac2bf835a77ef68bbe069194c5">mathlib4</a>.</li>
-                        </ul>
-                    </p>
-                    <br />
-                    <p style="font-size: 125%">LeanDojo can extract data from any GitHub repos in Lean (supporting both Lean 3 and Lean 4). The data contains rich information not directly visible in the raw Lean code, including file dependencies, abstract syntax trees (ASTs), proof states, tactics, and premises.</p>
-                    <br />
-                    <p style="font-size: 125%"><b>Key feature 1: Premise information</b>: LeanDojo Benchmark contains fine-grained annotations of premises (where they are used in proofs and where they are defined in the library), providing valuable data for premise selection&mdash;a key bottleneck in theorem proving.</p>
-                    <br />
-                    <p style="font-size: 125%"><b>Key feature 2: Challenging data split</b>: Splitting theorems randomly into training/testing leads to overestimated performance. LLMs can prove seemingly difficult theorems simply by memorizing the proofs of similar theorems during training. We mitigate this issue by designing challenging data split requiring the model to generalize to theorems relying on novel premises that are never used in training.</p>
+                    <h2 class="title is-3"><span class="lean-infer">The Grand Challenge</span></h2>
+                    <p style="font-size: 125%">The integration of artificial intelligence with formal mathematics presents a critical research challenge in bridging two fundamentally different computational paradigms. Large Language Models demonstrate remarkable capabilities in mathematical reasoning and proof generation, yet suffer from inconsistencies and hallucinations that compromise logical reliability. Formal proof assistants such as Lean provide absolute verification through mechanized type theory, ensuring every mathematical statement is rigorously validated by a trusted kernel. <strong>Our central ambition</strong> is to combine the power of LLMs with Lean to produce more verifiable mathematics, code, and scientific reasoning for a wide range of downstream applications.</p>
                 </div>
             </div>
         </div>
@@ -246,53 +169,8 @@
         <div class="rows">
             <div class="rows is-centered ">
                 <div class="row is-full-width">
-                    <h2 class="title is-3"><span class="dvima">Interacting with Lean</span></h2>
-                    <img src="images/interaction.jpg" width="50%" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto"/>
-                    <p style="font-size: 125%">LeanDojo turns Lean into a <a target="_blank" href="https://github.com/openai/gym">gym-like</a> environment, in which the prover can observe the proof state, run tactics to change the state, and receive feedback on errors or on proof completion. This environment is indispensable for evaluating/deploying the prover or training it through RL.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!--
-<section class="section">
-    <div class="container is-max-widescreen">
-        <div class="rows">
-            <div class="rows is-centered ">
-                <div class="row is-full-width">
-                    <h2 class="title is-3"><span class="dvima">LeanDojo Benchmark</span></h2>
-                
-                    <img src="images/quaternion.jpg" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto"/>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="section">
-    <div class="container is-max-widescreen">
-        <div class="rows">
-            <div class="rows is-centered ">
-                <div class="row is-full-width">
-                    <h2 class="title is-3"><span class="dvima">ReProver: Retrieval-Augmented Theorem Prover</span></h2>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
--->
-
-<section class="section">
-    <div class="container is-max-widescreen">
-        <div class="rows">
-            <div class="rows is-centered ">
-                <div class="row is-full-width">
-                    <h2 class="title is-3"><span class="dvima">Experiments</span></h2>
-                    <img src="images/results.png" width="40%" class="interpolation-image" alt="" style="display: block; margin-left: auto; margin-right: auto"/>
-                    <br />
-                    <p style="font-size: 125%">We use LeanDojo Benchmark to train and evaluate ReProver. During testing, the tactic generator is combined with best-first search to search for complete proofs. The table shows the percentage of theorem proved within 10 minutes. The \(\texttt{novel_premises}\) spilt is much more challenging than the \(\texttt{random}\) split. On both data splits, ReProver outperforms Lean's built-in proof automation tactic (tidy), a baseline that generates tactics directly without retrieval, and another baseline using GPT-4 to generate tactics in a zero-shot manner.</p>
+                    <h2 class="title is-3"><span class="lean-infer">Our Research Program</span></h2>
+                    <p style="font-size: 125%">Our laboratory has developed several different research projects that systematically explores different facets of AI-assisted theorem proving. This work is primarily driven by researchers at Caltech, under the leadership of Professor Anima Anandkumar.</p>
                 </div>
             </div>
         </div>
@@ -304,155 +182,26 @@
         <div class="rows">
             <div class="rows is-centered ">
                 <div class="row is-full-width">
-                    <h2 class="title is-3"><span class="dvima">Discovering New Proofs and Uncovering Formalization Bugs</span></h2>
-                    <p style="font-size: 125%">We evaluate ReProver on theorems in miniF2F and ProofNet. It discovers <a target="_blank" href="https://github.com/facebookresearch/miniF2F/pull/13">33 proofs in miniF2F</a> and <a target="_blank" href="https://github.com/zhangir-azerbayev/ProofNet/pull/14">39 proofs in ProofNet</a> of theorems that did not have existing proofs in Lean. Our proofs have helped ProofNet uncover multiple bugs in the formalization of theorem statements.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section">
-    <div class="container is-max-widescreen">
-        <div class="rows">
-            <div class="rows is-centered ">
-                <div class="row is-full-width">
-                    <h2 class="title is-3"><span class="dvima" id="chatgpt-for-theorem-proving">ChatGPT for Theorem Proving</span></h2>
-                    <div class="columns">
-                        <div class="column has-text-left video-column">
-                            <video controls muted width="100%">
-                                <source src="images/chatgpt-1.mp4" type="video/mp4">
-                            </video>
-                            <div align="center">
-                                <a target="_blank" href="https://github.com/yangky11/lean-example/blob/5a0360e49946815cb53132638ccdd46fb1859e2a/src/example.lean#L3">\(a + b + c = a + c + b\)</a>
-                            </div>
-                        </div>
-
-                        <div class="column has-text-left video-column">
-                            <video controls muted width="100%">
-                                <source src="images/chatgpt-2.mp4" type="video/mp4">
-                            </video>
-                            <div align="center">
-                                <a target="_blank" href="https://github.com/leanprover-community/mathlib/blob/19c869efa56bbb8b500f2724c0b77261edbfa28c/src/analysis/special_functions/stirling.lean#L252">Stirling’s formula</a>
-                            </div>
-                        </div>
-
-                        <div class="column has-text-left video-column">
-                            <video controls muted width="100%">
-                                <source src="images/chatgpt-3.mp4" type="video/mp4">
-                            </video>
-                            <div align="center">
-                                <a target="_blank" href="https://github.com/leanprover-community/mathlib/blob/19c869efa56bbb8b500f2724c0b77261edbfa28c/src/algebra/big_operators/intervals.lean#L195">Gauss' summation formula</a>
-                            </div>
-                        </div>
+                    <h2 class="title is-3"><span class="dvima">Our Five Major Contributions</span></h2>
+                    <div class="content">
+                        <h3 class="title is-4"><strong>LeanDojo</strong></h3>
+                        <p style="font-size: 125%">The foundational infrastructure that bridges Python-based ML and the Lean prover, enabling data extraction and interactive environments for AI research. This work provides the essential tooling that makes all subsequent research possible.</p>
+                        
+                        <h3 class="title is-4"><strong>LeanAgent</strong></h3>
+                        <p style="font-size: 125%">A lifelong learning framework for autonomous theorem proving that continuously improves across expanding mathematical domains without catastrophic forgetting. This represents our exploration of fully autonomous mathematical reasoning.</p>
+                        
+                        <h3 class="title is-4"><strong>LeanCopilot</strong></h3>
+                        <p style="font-size: 125%">A human-in-the-loop assistant that seamlessly integrates LLMs into the Lean environment, providing real-time suggestions and proof automation. This work demonstrates effective human-AI collaboration in formal mathematics.</p>
+                        
+                        <h3 class="title is-4"><strong>LeanProgress</strong></h3>
+                        <p style="font-size: 125%">A specialized system that provides global progress estimation for proof search, improving the efficiency of automated theorem proving through intelligent search guidance.</p>
+                        
+                        <h3 class="title is-4"><strong>LeanIDE</strong></h3>
+                        <p style="font-size: 125%">An integrated development environment specifically designed for Lean theorem proving, combining modern IDE features with AI-powered assistance to create the ultimate platform for formal mathematics.</p>
                     </div>
-                    <br />
-                    <p style="font-size: 125%">We build a <a target="_blank" href="https://github.com/lean-dojo/LeanDojoChatGPT">LeanDojo ChatGPT plugin</a> that enables ChatGPT to prove theorems by interacting with Lean. Compared to specialized LLMs finetuned for theorem proving (e.g., ReProver), ChatGPT can interleave informal mathematics with formal proof steps, similar to how humans interact with proof assistants. It can explain error messages from Lean and is more steerable (by prompt engineering) than specialized provers. However, it struggles to find correct proofs in most cases, due to weakness in search and planning.</p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-    
-
-<section class="section">
-    <div class="container is-max-widescreen">
-        <div class="rows">
-            <div class="rows is-centered ">
-                <div class="row is-full-width">
-                    <h2 class="title is-3"><span class="dvima">Team</span></h2>
-                    <div class="columns" style="max-width: 95%; padding-left: 10%;">
-                        <div class="column has-text-centered video-column">
-                            <a href="https://yangky11.github.io/" target="_blank" style="border-bottom: none;">
-                                <span class="image" style="padding-left: 10%;"><img src="images/Kaiyu.jpg" alt="" style="width: 90%;" /></span>
-                                <span style="font-weight: bold;">Kaiyu Yang</span>
-                            </a>
-                        </div>
-
-                        <div class="column has-text-centered video-column">
-                            <a href="https://aidanswope.com/about" target="_blank" style="border-bottom: none;">
-                                <span class="image" style="padding-left: 10%;"><img src="images/Aidan.jpg" alt="" style="width: 90%;" /></span>
-                                <span style="font-weight: bold;">Aidan Swope</span>
-                            </a>
-                        </div>
-
-                        <div class="column has-text-centered video-column">
-                            <a href="https://minimario.github.io/" target="_blank" style="border-bottom: none;">
-                                <span class="image" style="padding-left: 10%;"><img src="images/Alex.jpg" alt="" style="width: 90%;" /></span>
-                                <span style="font-weight: bold;">Alex Gu</span>
-                            </a>
-                        </div>
-
-                        <div class="column has-text-centered video-column">
-                            <a href="https://rchalamala.github.io/" target="_blank" style="border-bottom: none;">
-                                <span class="image" style="padding-left: 10%;"><img src="images/Rahul.jpg" alt="" style="width: 90%;" /></span>
-                                <span style="font-weight: bold;">Rahul Chalamala</span>
-                            </a>
-                        </div>
-
-                        <div class="column has-text-centered video-column">
-                            <a href="https://peiyang-song.github.io/" target="_blank" style="border-bottom: none;">
-                                <span class="image" style="padding-left: 10%;"><img src="images/Peiyang.jpg" alt="" style="width: 90%;" /></span>
-                                <span style="font-weight: bold;">Peiyang Song</span>
-                            </a>
-                        </div>
-
-                    </div>
-                    <br />
-                    <div class="columns" style="max-width: 80%; padding-left: 10%;">
-
-                        <div class="column has-text-centered video-column">
-                            <a href="https://billysx.github.io/" target="_blank" style="border-bottom: none;">
-                                <span class="image" style="padding-left: 10%;"><img src="images/Shixing.jpg" alt="" style="width: 90%;" /></span>
-                                <span style="font-weight: bold;">Shixing Yu</span>
-                            </a>
-                        </div>
-
-                        <div class="column has-text-centered video-column">
-                            <a href="https://www.linkedin.com/in/saad-godil-9728353/" target="_blank" style="border-bottom: none;">
-                                <span class="image" style="padding-left: 10%;"><img src="images/Saad.jpg" alt="" style="width: 90%;" /></span>
-                                <span style="font-weight: bold;">Saad Godil</span>
-                            </a>
-                        </div>
-
-                        <div class="column has-text-centered video-column">
-                            <a href="https://www.linkedin.com/in/ryan-prenger-18797ba1/" target="_blank" style="border-bottom: none;">
-                                <span class="image" style="padding-left: 10%;"><img src="images/Ryan.jpg" alt="" style="width: 90%;" /></span>
-                                <span style="font-weight: bold;">Ryan Prenger</span>
-                            </a>
-                        </div>
-
-                        <div class="column has-text-centered video-column">
-                            <a href="http://tensorlab.cms.caltech.edu/users/anima/" target="_blank" style="border-bottom: none;">
-                                <span class="image" style="padding-left: 10%;"><img src="images/Anima.jpg" alt="" style="width: 90%;" /></span>
-                                <span style="font-weight: bold;">Anima Anandkumar</span>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-    
-<section class="section" id="BibTeX">
-    <div class="container is-max-widescreen content">
-        <h2 class="title">BibTeX</h2>
-        <pre><code>@inproceedings{yang2023leandojo,
-    title={{LeanDojo}: Theorem Proving with Retrieval-Augmented Language Models},
-    author={Yang, Kaiyu and Swope, Aidan and Gu, Alex and Chalamala, Rahul and Song, Peiyang and Yu, Shixing and Godil, Saad and Prenger, Ryan and Anandkumar, Anima},
-    booktitle={Neural Information Processing Systems (NeurIPS)},
-    year={2023}
-}
-
-@article{song2024lean,
-  title={Lean copilot: Large language models as copilots for theorem proving in lean},
-  author={Song, Peiyang and Yang, Kaiyu and Anandkumar, Anima},
-  journal={arXiv preprint arXiv:2404.12534},
-  year={2024}
-}</code></pre>
     </div>
 </section>
 

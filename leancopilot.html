@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lean Copilot: Large Language Models as Copilots for Theorem Proving in Lean</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/academicons.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+            <strong>LeanDojo</strong>
+        </a>
+    </div>
+    
+    <div class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="index.html">
+                Home
+            </a>
+            <a class="navbar-item" href="leandojo.html">
+                LeanDojo
+            </a>
+            <a class="navbar-item" href="leanagent.html">
+                LeanAgent
+            </a>
+            <a class="navbar-item is-active" href="leancopilot.html">
+                LeanCopilot
+            </a>
+            <a class="navbar-item" href="leanprogress.html">
+                LeanProgress
+            </a>
+            <a class="navbar-item" href="leanide.html">
+                LeanIDE
+            </a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">Lean Copilot: Large Language Models as Copilots for Theorem Proving in Lean</h1>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">
+                            <a href="#">Peiyang Song</a><sup>1</sup>,</span>
+                        <span class="author-block">
+                            <a href="#">Kaiyu Yang</a><sup>1</sup>,</span>
+                        <span class="author-block">
+                            <a href="#">Anima Anandkumar</a><sup>1</sup></span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>California Institute of Technology</span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><strong>Published:</strong> International Conference on
+Neuro-symbolic Systems (NeuS) 2025</span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <span class="link-block">
+                                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </span>
+                                <span>Paper</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a target="_blank" href="https://github.com/lean-dojo/LeanCopilot"
+                                class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fab fa-github"></i>
+                                </span>
+                                <span>Code</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a target="_blank" href="https://leandojo.readthedocs.io/en/latest/index.html"
+                                class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fas fa-book"></i>
+                                </span>
+                                <span>Docs</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="lean-infer">Abstract</span></h2>
+                    <p style="font-size: 125%">Lean Copilot addresses the grand challenge of human-AI collaboration in formal theorem proving by introducing large language models as intelligent assistants within the Lean proof environment. This system bridges the gap between human mathematical intuition and machine computational power, enabling seamless collaboration in formal proof development.</p>
+                    <br />
+                    <p style="font-size: 125%">The system provides real-time assistance through tactic suggestion, premise selection, and automated proof search, fundamentally transforming how mathematicians interact with formal proof systems and accelerating the formalization of mathematical knowledge.</p>
+                    <br />
+                    <video controls>
+            		  <source src="images/Lean Copilot demo.mp4" type="video/mp4">
+            		  Your browser does not support HTML video.
+            		</video>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Technical Architecture</span></h2>
+                    <div class="content">
+                        <p style="font-size: 125%">Lean Copilot implements a sophisticated human-in-the-loop architecture that seamlessly integrates large language models with the Lean theorem prover:</p>
+                        <br />
+                        <div class="columns">
+                            <div class="column">
+                                <h3 class="title is-4">Intelligent Tactic Suggestion</h3>
+                                <p style="font-size: 125%">Context-aware tactic recommendations based on current proof state and mathematical context, leveraging deep understanding of Lean's tactic language and proof patterns.</p>
+                            </div>
+                            <div class="column">
+                                <h3 class="title is-4">Dynamic Premise Selection</h3>
+                                <p style="font-size: 125%">Automated identification and retrieval of relevant theorems and lemmas from Lean's extensive mathematical library using semantic similarity and logical relevance.</p>
+                            </div>
+                            <div class="column">
+                                <h3 class="title is-4">Guided Proof Search</h3>
+                                <p style="font-size: 125%">Advanced search algorithms that combine human guidance with automated exploration to discover complete proofs efficiently.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Human-AI Collaboration Paradigm</span></h2>
+                    <div class="content">
+                        <p style="font-size: 125%">Lean Copilot pioneered a new paradigm of human-AI collaboration in formal mathematics, where AI serves as an intelligent assistant rather than a replacement for human mathematical reasoning:</p>
+                        <br />
+                        <div class="columns">
+                            <div class="column">
+                                <h4 class="title is-5">Interactive Assistance</h4>
+                                <p style="font-size: 125%">Real-time suggestions and guidance that adapt to the mathematician's proof strategy and style, maintaining human agency in the proof development process.</p>
+                            </div>
+                            <div class="column">
+                                <h4 class="title is-5">Flexible Deployment</h4>
+                                <p style="font-size: 125%">Support for local, cloud, and custom model deployment options, enabling researchers to choose the configuration that best fits their privacy and performance requirements.</p>
+                            </div>
+                            <div class="column">
+                                <h4 class="title is-5">Extensible Framework</h4>
+                                <p style="font-size: 125%">Modular architecture that allows integration of new models and techniques, fostering continued innovation in AI-assisted theorem proving.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Getting Started</span></h2>
+                    <div class="content">
+                        <p style="font-size: 125%">To get started with Lean Copilot, visit our <a target="_blank" href="https://github.com/lean-dojo/LeanCopilot">GitHub repository</a> for installation instructions and examples. For detailed documentation and tutorials, check out our <a target="_blank" href="https://leandojo.readthedocs.io/en/latest/index.html">documentation</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="content has-text-centered">
+                    <p>
+                        Website template borrowed from <a
+                            href="https://vimalabs.github.io/">VIMA</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

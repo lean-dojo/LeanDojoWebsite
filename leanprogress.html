@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LeanProgress: Guiding Search for Neural Theorem Proving via Proof Progress Prediction</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/academicons.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+            <strong>LeanDojo</strong>
+        </a>
+    </div>
+    
+    <div class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="index.html">
+                Home
+            </a>
+            <a class="navbar-item" href="leandojo.html">
+                LeanDojo
+            </a>
+            <a class="navbar-item" href="leanagent.html">
+                LeanAgent
+            </a>
+            <a class="navbar-item" href="leancopilot.html">
+                LeanCopilot
+            </a>
+            <a class="navbar-item is-active" href="leanprogress.html">
+                LeanProgress
+            </a>
+            <a class="navbar-item" href="leanide.html">
+                LeanIDE
+            </a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">LeanProgress: Guiding Search for Neural Theorem Proving via Proof Progress Prediction</h1>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">
+                            <a href="#">Suozhi Huang</a><sup>1</sup>,</span>
+                        <span class="author-block">
+                            <a href="#">Peiyang Song</a><sup>2</sup>,</span>
+                        <span class="author-block">
+                            <a href="#">Robert Joseph George</a><sup>2</sup>,</span>
+                        <span class="author-block">
+                            <a href="#">Anima Anandkumar</a><sup>2</sup></span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>Institute for Interdisciplinary Information Sciences, Tsinghua University</span><br>
+                        <span class="author-block"><sup>2</sup>California Institute of Technology</span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <span class="link-block">
+                                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </span>
+                                <span>Paper</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a target="_blank" href="https://github.com/lean-dojo"
+                                class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fab fa-github"></i>
+                                </span>
+                                <span>Code</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="lean-infer">LeanProgress Visualization</span></h2>
+                    <img src="images/leanprogress_overview.png" class="interpolation-image" alt="LeanProgress Visualization" style="display: block; margin-left: auto; margin-right: auto; width: 90%;"/>
+                    <br />
+                    <p style="font-size: 125%"><strong>The visualization of LeanProgress.</strong> LeanProgress is a lightweight framework that collects the number of remaining steps in proof trees and then balances the data distribution to train the language model. Then LeanProgress takes the proof state as input to generate the remaining steps for each state as a signal for search. LeanProgress also integrates the tactic predict steps in LeanCopilot as a user-friendly tool.</p>
+                    <br />
+                    <h2 class="title is-3"><span class="lean-infer">Abstract</span></h2>
+                    <p style="font-size: 125%">Mathematical reasoning remains a significant challenge for Large Language Models (LLMs) due to hallucinations. When combined with formal proof assistants like Lean, these hallucinations can be eliminated through rigorous verification, making theorem proving reliable. However, even with formal verification, LLMs still struggle with long proofs and complex mathematical formalizations.</p>
+                    <br />
+                    <p style="font-size: 125%">While Lean with LLMs offers valuable assistance with retrieving lemmas, generating tactics, or even complete proofs, it lacks a crucial capability: providing a sense of proof progress. This limitation particularly impacts the overall development efficiency in large formalization projects. LeanProgress addresses this critical gap by introducing a novel proof progress prediction mechanism that predicts the likelihood of proof completion from intermediate proof states, enabling more intelligent search strategies that significantly improve the efficiency and success rate of automated theorem proving systems.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Key Innovation: Proof Progress Prediction</span></h2>
+                    <div class="content">
+                        <p style="font-size: 125%">LeanProgress introduces a groundbreaking approach to theorem proving search by predicting the number of remaining steps toward proof completion. Our method achieves <strong>75.1% overall prediction accuracy</strong> and demonstrates a <strong>3.8% improvement on Mathlib4</strong> compared to baseline performance of 41.2%.</p>
+                        <br />
+                        <div class="columns">
+                            <div class="column">
+                                <h3 class="title is-4">Progress Estimation</h3>
+                                <p style="font-size: 125%">Fine-tuned DeepSeek Coder 1.3B model that evaluates intermediate proof states and predicts the exact number of remaining steps for completion, with Mean Absolute Error (MAE) of 3.29.</p>
+                            </div>
+                            <div class="column">
+                                <h3 class="title is-4">Search Guidance</h3>
+                                <p style="font-size: 125%">Intelligent best-first search algorithms that combine progress predictions with log probabilities to prioritize promising proof paths and avoid unproductive exploration branches.</p>
+                            </div>
+                            <div class="column">
+                                <h3 class="title is-4">Practical Integration</h3>
+                                <p style="font-size: 125%">Native integration with LeanCopilot through the <code>predict_steps_with_suggestion</code> tactic, providing both tactic suggestions and remaining step predictions directly in Lean.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="lean-infer">Technical Approach & Dataset</span></h2>
+                    <div class="content">
+                        <p style="font-size: 125%">LeanProgress implements a sophisticated data generation and model training pipeline:</p>
+                        <br />
+
+                        <h3 class="title is-4">Balanced Dataset Construction</h3>
+                        <p style="font-size: 125%">We constructed a balanced dataset of approximately <strong>80,000 proof trajectories</strong> from Lean Workbook Plus and Mathlib4 using best-first search with the Reprover model. The original dataset exhibited a skewed distribution with an average proof length of 2.47 steps. We addressed this imbalance through strategic sampling ratios:</p>
+                        <ul style="font-size: 125%; margin-left: 2em;">
+                            <li><strong>1-5 steps (Basic):</strong> 0.01 sampling ratio</li>
+                            <li><strong>6-10 steps (Intermediate):</strong> 0.3 sampling ratio</li>
+                            <li><strong>11-15 steps (Moderate):</strong> 0.5 sampling ratio</li>
+                            <li><strong>16-20 steps (Advanced):</strong> 0.7 sampling ratio</li>
+                            <li><strong>21+ steps (Expert):</strong> 1.0 sampling ratio</li>
+                        </ul>
+                        <p style="font-size: 125%">This resulted in a more balanced dataset with an average proof length of 10.1 steps, ensuring better representation of longer, more complex proofs.</p>
+
+                        <h3 class="title is-4">Model Architecture & Training</h3>
+                        <p style="font-size: 125%">We fine-tuned a DeepSeek Coder V1 1.3B base model using Mean Squared Error (MSE) loss with the AdamW optimizer. The model takes proof states and optional proof history as input and predicts the exact number of remaining steps. Key training parameters included batch size of 4, learning rate of 1e-5, and weight decay of 0.01.</p>
+                        
+                        <h3 class="title is-4">Proof History Integration</h3>
+                        <p style="font-size: 125%">Our experiments demonstrate the crucial importance of incorporating proof history. Models using both current state and proof history achieved significantly better performance across all proof length ranges, with overall accuracy improving from 61.8% to 75.1% and MAE decreasing from 5.217 to 3.290.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Performance Results & Impact</span></h2>
+                    <div class="content">
+                        <p style="font-size: 125%">LeanProgress demonstrates significant improvements across multiple evaluation metrics:</p>
+                        <br />
+                        <div class="columns">
+                            <div class="column">
+                                <h4 class="title is-5">Prediction Accuracy</h4>
+                                <p style="font-size: 125%"><strong>75.1% overall accuracy</strong> in predicting remaining proof steps, with particularly strong performance on longer proofs (76.7% accuracy for 21+ step proofs).</p>
+                            </div>
+                            <div class="column">
+                                <h4 class="title is-5">Search Improvement</h4>
+                                <p style="font-size: 125%"><strong>3.8% improvement</strong> on Mathlib4 test dataset compared to baseline Reprover performance of 41.2%, achieved by combining step predictions with log probabilities.</p>
+                            </div>
+                            <div class="column">
+                                <h4 class="title is-5">Practical Tool</h4>
+                                <p style="font-size: 125%">Integrated <code>predict_steps_with_suggestion</code> tactic in LeanCopilot provides immediate feedback on proof progress and concrete guidance for tactic selection.</p>
+                            </div>
+                        </div>
+                        <br />
+                        <h3 class="title is-4">Real-World Applications</h3>
+                        <p style="font-size: 125%">LeanProgress enables more informed decision-making in interactive theorem proving by providing users with concrete estimates of proof complexity. Unlike traditional tactic suggestion tools that only offer local guidance, LeanProgress provides a global view of the proof process, helping users understand whether they're making progress toward completion or exploring unproductive paths.</p>
+                        
+                        <h3 class="title is-4">Future Potential</h3>
+                        <p style="font-size: 125%">The continuous reward signal provided by LeanProgress opens new possibilities for reinforcement learning applications in automated theorem proving. By offering meaningful feedback throughout the proving process rather than just binary success/failure signals, LeanProgress could enable more effective RL training for complex mathematical reasoning tasks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="lean-infer">Key Contributions</span></h2>
+                    <div class="content">
+                        <div style="font-size: 125%;">
+                            <p><strong>1. Balanced Data Generation Pipeline:</strong> We developed a systematic approach to address the challenge of skewed proof length distributions by constructing a balanced dataset of ~80k proof trajectories with strategic sampling ratios based on proof complexity.</p>
+                            <br />
+                            <p><strong>2. Novel Progress Prediction Model:</strong> Our fine-tuned DeepSeek Coder model provides a global view of proof progress by predicting exact remaining steps rather than just immediate next tactics, achieving 75.1% accuracy with MAE of 3.29.</p>
+                            <br />
+                            <p><strong>3. Progress-Guided Search Integration:</strong> We demonstrated how step predictions can be effectively combined with traditional log probabilities in best-first search frameworks, showing measurable improvements in theorem proving success rates.</p>
+                            <br />
+                            <p><strong>4. Practical Tool Development:</strong> Integration with LeanCopilot provides a user-friendly interface through the <code>predict_steps_with_suggestion</code> tactic, offering both tactic suggestions and progress feedback directly within the standard Lean workflow.</p>
+                            <br />
+                            <p><strong>5. Foundation for Future RL Applications:</strong> By providing continuous reward signals throughout the proof process, LeanProgress establishes groundwork for more sophisticated reinforcement learning approaches to automated theorem proving.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="content has-text-centered">
+                    <p>
+                        Website template borrowed from <a
+                            href="https://vimalabs.github.io/">VIMA</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
