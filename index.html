@@ -110,39 +110,6 @@
                             </span>
                             <span>Code</span>
                             </a>
-
-                            <span class="link-block">
-                                <a target="_blank" href="https://leandojo.readthedocs.io/en/latest/index.html"
-                                class="external-link button is-normal is-rounded is-dark">
-                                <span class="icon">
-                                    <i class="fas fa-book"></i>
-                                </span>
-                                <span>Docs</span>
-                            </a>
-
-                            <a target="_blank" href="https://github.com/lean-dojo/ReProver"
-                            class="external-link button is-normal is-rounded is-dark">
-                            <span class="icon">
-                                <i class="fa fa-network-wired"></i>
-                            </span>
-                            <span>Models</span>
-                            </a>
-
-                            <a target="_blank" href="https://zenodo.org/doi/10.5281/zenodo.8016385"
-                            class="external-link button is-normal is-rounded is-dark">
-                            <span class="icon">
-                                <i class="fas fa-database"></i>
-                            </span>
-                            <span>Dataset (Lean 3)</span>
-                            </a>
-
-                            <a target="_blank" href="https://zenodo.org/doi/10.5281/zenodo.8040109"
-                            class="external-link button is-normal is-rounded is-dark">
-                            <span class="icon">
-                                <i class="fas fa-database"></i>
-                            </span>
-                            <span>Dataset (Lean 4)</span>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -157,7 +124,7 @@
             <div class="rows is-centered ">
                 <div class="row is-full-width">
                     <h2 class="title is-3"><span class="lean-infer">The Grand Challenge</span></h2>
-                    <p style="font-size: 125%">The integration of artificial intelligence with formal mathematics presents a critical research challenge in bridging two fundamentally different computational paradigms. Large Language Models demonstrate remarkable capabilities in mathematical reasoning and proof generation, yet suffer from inconsistencies and hallucinations that compromise logical reliability. Formal proof assistants such as Lean provide absolute verification through mechanized type theory, ensuring every mathematical statement is rigorously validated by a trusted kernel. <strong>Our central ambition</strong> is to combine the power of LLMs with Lean to produce more verifiable mathematics, code, and scientific reasoning for a wide range of downstream applications.</p>
+                    <p style="font-size: 125%">The grand challenge is to formalize and verify everything—from programs, to scientific experiments, to mathematics. Our lab is taking steps towards building important fundamental contributions in this direction, combining large language models with formal proof assistants like Lean to make verification accessible and practical.</p>
                 </div>
             </div>
         </div>
@@ -182,22 +149,37 @@
         <div class="rows">
             <div class="rows is-centered ">
                 <div class="row is-full-width">
-                    <h2 class="title is-3"><span class="dvima">Our Five Major Contributions</span></h2>
-                    <div class="content">
-                        <h3 class="title is-4"><strong>LeanDojo</strong></h3>
-                        <p style="font-size: 125%">The foundational infrastructure that bridges Python-based ML and the Lean prover, enabling data extraction and interactive environments for AI research. This work provides the essential tooling that makes all subsequent research possible.</p>
+                    <h2 class="title is-3"><span class="dvima">Papers</span></h2>
+                    <div class="content" style="font-size: 125%">
+                        <p><strong>Mathematical Discovery and Formalization Towards the AC Conjecture</strong><br>
+                        Caroline Zhang, Aaron Zhao, Robert Joseph George, Sergei Gukov, Anima Anandkumar<br>
+                        <em>NeurIPS Mathematical Reasoning and AI, 2025</em><br>
+                        <a target="_blank" href="https://neurips.cc/virtual/2025/workshop/109565">NeurIPS Workshop</a></p>
                         
-                        <h3 class="title is-4"><strong>LeanAgent</strong></h3>
-                        <p style="font-size: 125%">A lifelong learning framework for autonomous theorem proving that continuously improves across expanding mathematical domains without catastrophic forgetting. This represents our exploration of fully autonomous mathematical reasoning.</p>
+                        <p><strong>LeanDojo-v2: A Comprehensive Library for AI-Assisted Theorem Proving in Lean</strong><br>
+                        Ryan Hsiang, Will Adkisson, Robert Joseph George, Anima Anandkumar<br>
+                        <em>NeurIPS Mathematical Reasoning and AI, 2025</em><br>
+                        <a target="_blank" href="https://neurips.cc/virtual/2025/workshop/109565">NeurIPS Workshop</a></p>
                         
-                        <h3 class="title is-4"><strong>LeanCopilot</strong></h3>
-                        <p style="font-size: 125%">A human-in-the-loop assistant that seamlessly integrates LLMs into the Lean environment, providing real-time suggestions and proof automation. This work demonstrates effective human-AI collaboration in formal mathematics.</p>
+                        <p><strong>LeanProgress: Guiding Search for Neural Theorem Proving via Proof Progress Prediction</strong><br>
+                        Robert Joseph George, Suozhi Huang, Anima Anandkumar et al.<br>
+                        <em>Transactions on Machine Learning Research (TMLR), 2025</em><br>
+                        <a target="_blank" href="https://arxiv.org/abs/2502.17925">arXiv:2502.17925</a></p>
                         
-                        <h3 class="title is-4"><strong>LeanProgress</strong></h3>
-                        <p style="font-size: 125%">A specialized system that provides global progress estimation for proof search, improving the efficiency of automated theorem proving through intelligent search guidance.</p>
+                        <p><strong>LeanAgent: Lifelong Learning for Formal Theorem Proving</strong><br>
+                        Adarsh Kumarappan, Mo Tiwari, Peiyang Song, Robert Joseph George, Chaowei Xiao, Anima Anandkumar<br>
+                        <em>International Conference on Learning Representations (ICLR) 2025</em><br>
+                        <a target="_blank" href="https://arxiv.org/abs/2410.06209">arXiv:2410.06209</a></p>
                         
-                        <h3 class="title is-4"><strong>LeanIDE</strong></h3>
-                        <p style="font-size: 125%">An integrated development environment specifically designed for Lean theorem proving, combining modern IDE features with AI-powered assistance to create the ultimate platform for formal mathematics.</p>
+                        <p><strong>Lean Copilot: Large Language Models as Copilots for Theorem Proving in Lean</strong><br>
+                        Peiyang Song, Kaiyu Yang, Anima Anandkumar<br>
+                        <em>International Conference on Neuro-symbolic Systems (NeuS) 2025</em><br>
+                        <a target="_blank" href="https://arxiv.org/abs/2404.12534">arXiv:2404.12534</a></p>
+                        
+                        <p><strong>LeanDojo: Theorem Proving with Retrieval-Augmented Language Models</strong><br>
+                        Kaiyu Yang, Aidan Swope, Alex Gu, Rahul Chalamala, Peiyang Song, Shixing Yu, Saad Godil, Ryan Prenger, Anima Anandkumar<br>
+                        <em>Neural Information Processing Systems (NeurIPS) 2023</em><br>
+                        <a target="_blank" href="https://arxiv.org/abs/2306.15626">arXiv:2306.15626</a></p>
                     </div>
                 </div>
             </div>
