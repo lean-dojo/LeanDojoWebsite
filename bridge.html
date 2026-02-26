@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BRIDGE: Building Representations In Domain Guided Program Synthesis</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/academicons.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+            <strong>LeanDojo</strong>
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="index.html">
+                Home
+            </a>
+            <a class="navbar-item" href="leandojo.html">
+                LeanDojo
+            </a>
+            <a class="navbar-item" href="leanagent.html">
+                LeanAgent
+            </a>
+            <a class="navbar-item" href="leancopilot.html">
+                LeanCopilot
+            </a>
+            <a class="navbar-item" href="leanprogress.html">
+                LeanProgress
+            </a>
+            <a class="navbar-item" href="leanide.html">
+                LeanIDE
+            </a>
+            <a class="navbar-item" href="torchlean.html">
+                TorchLean
+            </a>
+            <a class="navbar-item is-active" href="bridge.html">
+                BRIDGE
+            </a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">BRIDGE: Building Representations In Domain Guided Program Synthesis</h1>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">
+                            Robert Joseph George, Carson Eisenach, Udaya Ghai, Dominique Perrault-Joncas, Anima Anandkumar, Dean Foster
+                        </span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><strong>Updated:</strong> arXiv v2 (Feb 25, 2026)</span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <span class="link-block">
+                                <a href="https://arxiv.org/abs/2511.21104" class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </span>
+                                <span>arXiv</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="https://arxiv.org/pdf/2511.21104.pdf" class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </span>
+                                <span>PDF</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="https://doi.org/10.48550/arXiv.2511.21104" class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="ai ai-doi"></i>
+                                </span>
+                                <span>DOI</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered ">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="lean-infer">Abstract</span></h2>
+                    <p style="font-size: 125%">Large language models (LLMs) are good at generating code, but remain brittle for formal verification in systems like Lean4. A core scalability challenge is that verified synthesis requires consistent outputs across multiple artifacts: executable code, precise specifications, theorem statements, and ultimately proofs. Existing approaches rarely treat these as a unified pipeline. We present BRIDGE, a structured prompting framework that decomposes verification into three interconnected domains: Code (implementations), Specifications (formal intent), and Theorem Statements (constructive correctness claims), and elicits domain-specific intermediate reasoning to connect them. In Lean4, BRIDGE often adopts a code-first workflow, using the generated implementation as a semantic anchor for downstream specification and theorem statement generation. Across 178 algorithmic problems and five LLMs, BRIDGE improves Lean executable correctness by nearly 1.5x (pass at 5) over direct baselines and can be 2x more sample-efficient at inference time, requiring fewer samples per verified solution at comparable generation lengths. We further find that specification-driven prompting improves Python pass rates by up to 17.5 percent. Beyond inference-time prompting, supervised fine-tuning on BRIDGE-style reasoning traces yields nearly 1.5x higher Lean pass success than code-only SFT, indicating that these intermediate representations are learnable. BRIDGE provides a practical foundation for scaling verified synthesis and motivates future work on expert iteration and full proof generation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Key Results</span></h2>
+                    <div class="content" style="font-size: 125%">
+                        <ul>
+                            <li>Across 178 algorithmic problems and five LLMs, nearly 1.5× higher Lean executable correctness (pass@5) vs. direct baselines.</li>
+                            <li>Up to 2× better sample efficiency at inference time (fewer samples per verified solution at comparable generation lengths).</li>
+                            <li>Specification-driven prompting improves Python pass rates by up to 17.5%.</li>
+                            <li>Supervised fine-tuning on BRIDGE-style reasoning traces yields nearly 1.5× higher Lean pass success than code-only SFT.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">What BRIDGE Changes</span></h2>
+                    <div class="content">
+                        <p style="font-size: 125%">BRIDGE structures verified program synthesis as a pipeline over three connected domains:</p>
+                        <img src="bridge.png" class="interpolation-image" alt="BRIDGE pipeline over code, specifications, and theorem statements" style="display: block; margin-left: auto; margin-right: auto; width: 90%;"/>
+                        <br />
+                        <div class="columns">
+                            <div class="column">
+                                <h3 class="title is-4">Code</h3>
+                                <p style="font-size: 125%">Generate an implementation that can be executed and checked, serving as a semantic anchor for downstream artifacts.</p>
+                            </div>
+                            <div class="column">
+                                <h3 class="title is-4">Specifications</h3>
+                                <p style="font-size: 125%">Elicit precise formal intent that matches the implementation and enables automated checking in Lean.</p>
+                            </div>
+                            <div class="column">
+                                <h3 class="title is-4">Theorem Statements</h3>
+                                <p style="font-size: 125%">Produce constructive correctness claims that connect the specification to the implementation and set up proof generation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="content has-text-centered">
+                    <p>
+                        Website template borrowed from <a
+                            href="https://vimalabs.github.io/">VIMA</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

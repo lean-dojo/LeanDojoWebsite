@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TorchLean: Formalizing Neural Networks in Lean</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/academicons.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+            <strong>LeanDojo</strong>
+        </a>
+    </div>
+
+    <div class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="index.html">
+                Home
+            </a>
+            <a class="navbar-item" href="leandojo.html">
+                LeanDojo
+            </a>
+            <a class="navbar-item" href="leanagent.html">
+                LeanAgent
+            </a>
+            <a class="navbar-item" href="leancopilot.html">
+                LeanCopilot
+            </a>
+            <a class="navbar-item" href="leanprogress.html">
+                LeanProgress
+            </a>
+            <a class="navbar-item" href="leanide.html">
+                LeanIDE
+            </a>
+            <a class="navbar-item is-active" href="torchlean.html">
+                TorchLean
+            </a>
+            <a class="navbar-item" href="bridge.html">
+                BRIDGE
+            </a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">TorchLean: Formalizing Neural Networks in Lean</h1>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">
+                            <a target="_blank" href="https://www.robertj1.com/">Robert Joseph George</a><sup>1</sup>,
+                            <a target="_blank" href="#">Jennifer Cruden</a><sup>1</sup>,
+                            <a target="_blank" href="#">Xiangru Zhong</a><sup>2</sup>,
+                            <a target="_blank" href="#">Huan Zhang</a><sup>2</sup>,
+                            <a target="_blank" href="http://tensorlab.cms.caltech.edu/users/anima/">Anima Anandkumar</a><sup>1</sup>
+                        </span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>California Institute of Technology; </span>
+                        <span class="author-block"><sup>2</sup>University of Illinois Urbana-Champaign</span>
+                    </div>
+
+                    <div class="is-size-6 publication-authors">
+                        <span class="author-block"><strong>Corresponding author:</strong> Robert George (<a href="mailto:rgeorge@caltech.edu">rgeorge@caltech.edu</a>)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3">Abstract</h2>
+                    <p style="font-size: 125%">
+                        Neural networks are increasingly deployed in safety- and mission-critical pipelines, yet many verification and analysis results are produced <strong>outside</strong> the programming environment that defines and runs the model. This separation creates a semantic gap between the <em>executed</em> network and the <em>analyzed</em> artifact, so guarantees can hinge on implicit conventions (operator semantics, tensor layouts, preprocessing, and floating-point corner cases). We introduce <strong>TorchLean</strong>, a framework in the formal theorem prover <strong>Lean</strong> that treats learning models as first-class mathematical objects with a single, precise semantics shared by execution and verification. To our knowledge, it is the first to interconnect these components over a shared intermediate representation (IR). TorchLean unifies: <strong>(1) a PyTorch-style verified API</strong> for defining models and training loops with eager execution and a compiled mode that lowers programs to a shared op-tagged computation-graph IR; <strong>(2) float32 semantics</strong>, via an executable IEEE-754 binary32 kernel (<code>IEEE32Exec</code>) and proof-relevant rounding models that make numerical assumptions and trust boundaries explicit; and <strong>(3) verification</strong>, via native IBP and CROWN/LiRPA-style bound propagation with certificate checking. We validate TorchLean end-to-end on three concrete use cases: certified robustness certificates for classifiers, physics-informed residual/derivative bounds for PINN-style scientific models, and control-oriented safety/stability checking for a neural controller, alongside mechanized theory results including a universal approximation theorem. Together, these results position TorchLean as a semantics-first infrastructure toward fully formal, end-to-end verification of learning-enabled systems.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
