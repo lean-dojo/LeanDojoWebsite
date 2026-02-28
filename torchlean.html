@@ -29,6 +29,21 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+        });
+    </script>
 </head>
 <body>
 
@@ -38,9 +53,15 @@
         <a class="navbar-item" href="index.html">
             <strong>LeanDojo</strong>
         </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
     </div>
 
-    <div class="navbar-menu">
+    <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
             <a class="navbar-item" href="index.html">
                 Home
@@ -94,6 +115,47 @@
                     <div class="is-size-6 publication-authors">
                         <span class="author-block"><strong>Corresponding author:</strong> Robert George (<a href="mailto:rgeorge@caltech.edu">rgeorge@caltech.edu</a>)</span>
                     </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><strong>arXiv preprint:</strong> 2602.22631 (submitted Feb 26, 2026) &mdash; 35 pages</span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <span class="link-block">
+                                <a href="https://arxiv.org/abs/2602.22631" class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </span>
+                                <span>arXiv</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="https://arxiv.org/pdf/2602.22631.pdf" class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </span>
+                                <span>PDF</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="https://doi.org/10.48550/arXiv.2602.22631" class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="ai ai-doi"></i>
+                                </span>
+                                <span>DOI</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a class="external-link button is-normal is-rounded is-light" aria-disabled="true">
+                                <span class="icon">
+                                    <i class="fab fa-github"></i>
+                                </span>
+                                <span>Code (coming soon)</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -107,8 +169,76 @@
                 <div class="row is-full-width">
                     <h2 class="title is-3">Abstract</h2>
                     <p style="font-size: 125%">
-                        Neural networks are increasingly deployed in safety- and mission-critical pipelines, yet many verification and analysis results are produced <strong>outside</strong> the programming environment that defines and runs the model. This separation creates a semantic gap between the <em>executed</em> network and the <em>analyzed</em> artifact, so guarantees can hinge on implicit conventions (operator semantics, tensor layouts, preprocessing, and floating-point corner cases). We introduce <strong>TorchLean</strong>, a framework in the formal theorem prover <strong>Lean</strong> that treats learning models as first-class mathematical objects with a single, precise semantics shared by execution and verification. To our knowledge, it is the first to interconnect these components over a shared intermediate representation (IR). TorchLean unifies: <strong>(1) a PyTorch-style verified API</strong> for defining models and training loops with eager execution and a compiled mode that lowers programs to a shared op-tagged computation-graph IR; <strong>(2) float32 semantics</strong>, via an executable IEEE-754 binary32 kernel (<code>IEEE32Exec</code>) and proof-relevant rounding models that make numerical assumptions and trust boundaries explicit; and <strong>(3) verification</strong>, via native IBP and CROWN/LiRPA-style bound propagation with certificate checking. We validate TorchLean end-to-end on three concrete use cases: certified robustness certificates for classifiers, physics-informed residual/derivative bounds for PINN-style scientific models, and control-oriented safety/stability checking for a neural controller, alongside mechanized theory results including a universal approximation theorem. Together, these results position TorchLean as a semantics-first infrastructure toward fully formal, end-to-end verification of learning-enabled systems.
+                        Neural networks are increasingly deployed in safety- and mission-critical pipelines, yet many verification and analysis results are produced outside the programming environment that defines and runs the model. This separation creates a semantic gap between the executed network and the analyzed artifact, so guarantees can hinge on implicit conventions such as operator semantics, tensor layouts, preprocessing, and floating-point corner cases. We introduce TorchLean, a framework in the Lean 4 theorem prover that treats learned models as first-class mathematical objects with a single, precise semantics shared by execution and verification. TorchLean unifies (1) a PyTorch-style verified API with eager and compiled modes that lower to a shared op-tagged SSA/DAG computation-graph IR, (2) explicit Float32 semantics via an executable IEEE-754 binary32 kernel and proof-relevant rounding models, and (3) verification via IBP and CROWN/LiRPA-style bound propagation with certificate checking. We validate TorchLean end-to-end on certified robustness, physics-informed residual bounds for PINNs, and Lyapunov-style neural controller verification, alongside mechanized theoretical results including a universal approximation theorem. These results demonstrate a semantics-first infrastructure for fully formal, end-to-end verification of learning-enabled systems.
                     </p>
+                    <br />
+                    <img src="torchlean.png" class="interpolation-image" alt="TorchLean overview" style="display: block; margin-left: auto; margin-right: auto; width: 90%;"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3">Key Contributions</h2>
+                    <div class="content" style="font-size: 125%">
+                        <ul>
+                            <li>PyTorch-style verified API in Lean 4 with eager and compiled modes that lower to an op-tagged SSA/DAG computation-graph IR.</li>
+                            <li>Explicit Float32 semantics via an executable IEEE-754 binary32 kernel and proof-relevant rounding models.</li>
+                            <li>Verification via IBP and CROWN/LiRPA-style bound propagation with certificate checking.</li>
+                            <li>End-to-end validation on certified robustness, PINN residual bounds, and Lyapunov-style neural controller verification, plus mechanized theory results (including a universal approximation theorem).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3">System Modules</h2>
+                    <p style="font-size: 125%">TorchLean is organized around three tightly integrated modules that share a single formal semantics end-to-end:</p>
+                    <br />
+                    <div class="columns">
+                        <div class="column">
+                            <h3 class="title is-4">TorchLean (Frontend)</h3>
+                            <div class="content" style="font-size: 125%">
+                                <ul>
+                                    <li>PyTorch-style API for defining models, layers, and training/inference code directly in Lean.</li>
+                                    <li>Eager execution for rapid iteration plus a compiled mode that lowers to an op-tagged SSA/DAG graph IR.</li>
+                                    <li>A single representation used by execution, analysis, and proof.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <h3 class="title is-4">Runtime (Semantics)</h3>
+                            <div class="content" style="font-size: 125%">
+                                <ul>
+                                    <li>Executable Float32 semantics via an IEEE-754 binary32 kernel (<code>IEEE32Exec</code>).</li>
+                                    <li>Proof-relevant rounding models to make numerical assumptions and trust boundaries explicit.</li>
+                                    <li>Eliminates “semantic gap” between what runs and what gets verified.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <h3 class="title is-4">Verification</h3>
+                            <div class="content" style="font-size: 125%">
+                                <ul>
+                                    <li>Native IBP and CROWN/LiRPA-style bound propagation over the shared graph IR.</li>
+                                    <li>Certificate checking to validate computed bounds inside Lean.</li>
+                                    <li>Supports robustness, PINN residual bounds, and control-oriented safety/stability (Lyapunov-style) verification.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
