@@ -104,6 +104,7 @@
                         <span class="author-block">
                             <a href="https://www.robertj1.com/">Robert Joseph George</a> <a href="mailto:rgeorge@caltech.edu"><i class="fas fa-envelope"></i></a><sup>1</sup>,
                             <a target="_blank" href="#">Jennifer Cruden</a><sup>1</sup>,
+                            <a target="_blank" href="#">Will Adkisson</a><sup>1</sup>,
                             <a target="_blank" href="#">Xiangru Zhong</a><sup>2</sup>,
                             <a target="_blank" href="#">Huan Zhang</a><sup>2</sup>,
                             <a target="_blank" href="http://tensorlab.cms.caltech.edu/users/anima/">Anima Anandkumar</a><sup>1</sup>
@@ -126,11 +127,19 @@
                                 </a>
                             </span>
                             <span class="link-block">
-                                <a class="external-link button is-normal is-rounded is-light" aria-disabled="true">
+                                <a href="https://github.com/lean-dojo/TorchLean" class="external-link button is-normal is-rounded is-dark">
                                 <span class="icon">
                                     <i class="fab fa-github"></i>
                                 </span>
-                                <span>Code (coming soon)</span>
+                                <span>Code</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="https://lean-dojo.github.io/TorchLean/" class="external-link button is-normal is-rounded is-light">
+                                <span class="icon">
+                                    <i class="fas fa-book"></i>
+                                </span>
+                                <span>Project Site</span>
                                 </a>
                             </span>
                         </div>
@@ -148,10 +157,24 @@
                 <div class="row is-full-width">
                     <h2 class="title is-3">Abstract</h2>
                     <p style="font-size: 125%">
-                        Neural networks are increasingly deployed in safety- and mission-critical pipelines, yet many verification and analysis results are produced outside the programming environment that defines and runs the model. This separation creates a semantic gap between the executed network and the analyzed artifact, so guarantees can hinge on implicit conventions such as operator semantics, tensor layouts, preprocessing, and floating-point corner cases. We introduce TorchLean, a framework in the Lean 4 theorem prover that treats learned models as first-class mathematical objects with a single, precise semantics shared by execution and verification. TorchLean unifies (1) a PyTorch-style verified API with eager and compiled modes that lower to a shared op-tagged SSA/DAG computation-graph IR, (2) explicit Float32 semantics via an executable IEEE-754 binary32 kernel and proof-relevant rounding models, and (3) verification via IBP and CROWN/LiRPA-style bound propagation with certificate checking. We validate TorchLean end-to-end on certified robustness, physics-informed residual bounds for PINNs, and Lyapunov-style neural controller verification, alongside mechanized theoretical results including a universal approximation theorem. These results demonstrate a semantics-first infrastructure for fully formal, end-to-end verification of learning-enabled systems.
+                        Neural networks are increasingly deployed through software stacks whose
+                        behavior is defined by tensor layouts, preprocessing choices, compiler
+                        boundaries, floating-point arithmetic, GPU kernels, and external model
+                        exporters. TorchLean is a Lean 4 codebase for neural network specification,
+                        execution, and verification that keeps those interfaces explicit. It gives
+                        models a shared formal vocabulary for typed tensors, shapes, layers, graph
+                        programs, objectives, gradients, finite-precision behavior, certificate
+                        checking, and runtime trust boundaries. The current codebase includes a
+                        PyTorch-style API, eager and compiled execution through an op-tagged SSA/DAG
+                        graph IR, reverse-mode autograd, optimizers, CUDA/GPU execution with CPU
+                        stubs and sanitizer/profiling support, PyTorch import/export workflows,
+                        Float32/IEEE-754 semantics, IBP and CROWN/LiRPA-style verification, and a
+                        model zoo covering MLPs, CNNs, ResNets, ViTs, GPT-style text models, GPT-2,
+                        Mamba/SSM examples, diffusion, MAE-style self-supervised learning,
+                        reinforcement learning, PINNs, and 3D-geometry certificate demos.
                     </p>
                     <br />
-                    <img src="torchlean.png" class="interpolation-image" alt="TorchLean overview" style="display: block; margin-left: auto; margin-right: auto; width: 90%;"/>
+                    <img src="torchlean.png" class="interpolation-image" alt="TorchLean system overview" style="display: block; margin-left: auto; margin-right: auto; width: 96%;"/>
                 </div>
             </div>
         </div>
@@ -166,10 +189,13 @@
                     <h2 class="title is-3">Key Contributions</h2>
                     <div class="content" style="font-size: 125%">
                         <ul>
-                            <li>PyTorch-style verified API in Lean 4 with eager and compiled modes that lower to an op-tagged SSA/DAG computation-graph IR.</li>
-                            <li>Explicit Float32 semantics via an executable IEEE-754 binary32 kernel and proof-relevant rounding models.</li>
-                            <li>Verification via IBP and CROWN/LiRPA-style bound propagation with certificate checking.</li>
-                            <li>End-to-end validation on certified robustness, PINN residual bounds, and Lyapunov-style neural controller verification, plus mechanized theory results (including a universal approximation theorem).</li>
+                            <li>Typed tensor and layer APIs for writing neural-network programs directly in Lean.</li>
+                            <li>Eager runtime, reverse-mode autograd, optimizers, logging, and compiled execution through a shared graph IR.</li>
+                            <li>CUDA/GPU backend with native kernels, CPU stubs, Compute Sanitizer checks, and Nsight profiling hooks.</li>
+                            <li>Explicit trust boundaries for external FFI, PyTorch import/export, Python/Julia/Arb oracles, α,β-CROWN certificates, and CUDA kernels.</li>
+                            <li>Float32 and IEEE-754-style semantics with proof layers for runtime approximation and finite-precision reasoning.</li>
+                            <li>Verification workflows for IBP, CROWN/LiRPA, robustness certificates, PINNs, Lyapunov-style controllers, VNN-COMP-style artifacts, and 3D geometry certificates.</li>
+                            <li>Runnable modern ML examples including GPT-2-style text, Mamba/SSM sequence models, diffusion, ResNet, ViT, MAE/self-supervised learning, and reinforcement learning.</li>
                         </ul>
                     </div>
                 </div>
@@ -184,36 +210,36 @@
             <div class="rows is-centered">
                 <div class="row is-full-width">
                     <h2 class="title is-3">System Modules</h2>
-                    <p style="font-size: 125%">TorchLean is organized around three tightly integrated modules that share a single formal semantics end-to-end:</p>
+                    <p style="font-size: 125%">TorchLean is organized around a shared semantics that connects model code, runtime execution, verification, and external tools:</p>
                     <br />
                     <div class="columns">
                         <div class="column">
-                            <h3 class="title is-4">TorchLean (Frontend)</h3>
+                            <h3 class="title is-4">Frontend and Models</h3>
                             <div class="content" style="font-size: 125%">
                                 <ul>
-                                    <li>PyTorch-style API for defining models, layers, and training/inference code directly in Lean.</li>
-                                    <li>Eager execution for rapid iteration plus a compiled mode that lowers to an op-tagged SSA/DAG graph IR.</li>
-                                    <li>A single representation used by execution, analysis, and proof.</li>
+                                    <li>PyTorch-shaped API for tensors, modules, optimizers, datasets, and training loops.</li>
+                                    <li>Examples for supervised, vision, sequence, generative, self-supervised, RL, and scientific ML models.</li>
+                                    <li>Interop paths for PyTorch-style exporters and round-trip artifacts.</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="column">
-                            <h3 class="title is-4">Runtime (Semantics)</h3>
+                            <h3 class="title is-4">Runtime and CUDA</h3>
                             <div class="content" style="font-size: 125%">
                                 <ul>
-                                    <li>Executable Float32 semantics via an IEEE-754 binary32 kernel (<code>IEEE32Exec</code>).</li>
-                                    <li>Proof-relevant rounding models to make numerical assumptions and trust boundaries explicit.</li>
-                                    <li>Eliminates “semantic gap” between what runs and what gets verified.</li>
+                                    <li>Eager and compiled execution share an op-tagged graph representation.</li>
+                                    <li>Reverse-mode autograd and backend-polymorphic model runners support CPU and CUDA paths.</li>
+                                    <li>Native CUDA code is isolated behind explicit FFI symbols, CPU stubs, sanitizer checks, and profiling scripts.</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="column">
-                            <h3 class="title is-4">Verification</h3>
+                            <h3 class="title is-4">Proof and Verification</h3>
                             <div class="content" style="font-size: 125%">
                                 <ul>
-                                    <li>Native IBP and CROWN/LiRPA-style bound propagation over the shared graph IR.</li>
-                                    <li>Certificate checking to validate computed bounds inside Lean.</li>
-                                    <li>Supports robustness, PINN residual bounds, and control-oriented safety/stability (Lyapunov-style) verification.</li>
+                                    <li>Tensor algebra, autograd correctness, runtime approximation, and IEEE/Float32 bridge theorems.</li>
+                                    <li>Certificate checkers for robustness, LiRPA/CROWN, PINNs, control, and geometry workflows.</li>
+                                    <li>Bug-zoo examples make failures such as masking, RoPE/KV-cache, tokenizer, compiler, and projection bugs concrete.</li>
                                 </ul>
                             </div>
                         </div>
