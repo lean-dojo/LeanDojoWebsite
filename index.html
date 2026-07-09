@@ -93,6 +93,22 @@
             <a class="navbar-item" href="bridge.html">
                 BRIDGE
             </a>
+            <a class="navbar-item" href="itpeval.html">
+                ITPEval
+            </a>
+            <a class="navbar-item" href="quantumlean.html">
+                QuantumLean-Bench
+            </a>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <button id="themeToggle" class="button is-normal is-rounded theme-toggle" type="button" aria-pressed="false">
+                    <span class="icon">
+                        <i class="fas fa-moon"></i>
+                    </span>
+                    <span>Dark mode</span>
+                </button>
+            </div>
         </div>
     </div>
 </nav>
@@ -108,19 +124,6 @@
                         <span class="author-block">California Institute of Technology, PI: <a target="_blank" href="http://tensorlab.cms.caltech.edu/users/anima/">Anima Anandkumar</a>, Grad Student: <a target="_blank" href="https://www.robertj1.com/">Robert Joseph George</a></span>
                     </div>
 
-                    <div class="column has-text-centered">
-                        <div class="publication-links">           
-
-                            <span class="link-block">
-                            <a target="_blank" href="https://github.com/lean-dojo"
-                            class="external-link button is-normal is-rounded is-dark">
-                            <span class="icon">
-                                <i class="fab fa-github"></i>
-                            </span>
-                            <span>Code</span>
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -129,72 +132,163 @@
 
 <section class="section">
     <div class="container is-max-widescreen">
-        <div class="rows">
-            <div class="rows is-centered ">
-                <div class="row is-full-width">
-                    <h2 class="title is-3"><span class="lean-infer">The Grand Challenge</span></h2>
-                    <p style="font-size: 125%">We care about a future where important scientific and mathematical work can be checked, trusted, and built on with confidence. Our lab develops tools that make formal verification more approachable and useful in practice, using large language models together with proof assistants like Lean. Our interests span scientific computing, software, experimental workflows, and pure mathematics: anywhere correctness, reproducibility, and rigorous reasoning matter.</p>
-                    <p style="font-size: 125%">We also believe this work should be open and collaborative. Our tools, benchmarks, datasets, and research artifacts are open sourced whenever possible, so that others can inspect them, build on them, and help improve them. Formal verification has the potential to become part of everyday scientific practice, but that will only happen if the community can experiment with the technology, understand how it works, and adapt it to real problems across disciplines.</p>
-                    <p style="font-size: 125%">If this vision resonates with you, we would love to hear from you. Whether you have questions, ideas, use cases, or features you wish existed, please reach out.</p>
+        <div class="columns is-centered">
+            <div class="column is-10 home-vision">
+                <div class="content" style="font-size: 125%">
+                    <p>We care about a future where important scientific and mathematical work can be checked, trusted, and built on with confidence. Our lab develops tools that make formal verification more approachable and useful in practice, using large language models together with proof assistants like Lean. Our interests span scientific computing, software, experimental workflows, and pure mathematics: anywhere correctness, reproducibility, and rigorous reasoning matter.</p>
+                    <p>We also believe this work should be open and collaborative. Our tools, benchmarks, datasets, and research artifacts are open sourced <a target="_blank" href="https://github.com/lean-dojo">here</a> whenever possible, so that others can inspect them, build on them, and help improve them. Formal verification has the potential to become part of everyday scientific practice, but that will only happen if the community can experiment with the technology, understand how it works, and adapt it to real problems across disciplines.</p>
+                    <p>If this vision resonates with you, we would love to hear from you. Whether you have questions, ideas, use cases, or features you wish existed, please reach out.</p>
+                </div>
+            </div>
+        </div>
+        <div class="columns is-centered">
+            <div class="column is-10">
+                <h2 class="title is-3"><span class="dvima">Papers</span></h2>
+                <div class="paper-toolbar">
+                    <input id="paperSearch" class="paper-search" type="search" placeholder="Search papers, authors, venues, topics..." aria-label="Search papers">
+                    <div class="paper-filters" aria-label="Filter papers by topic">
+                        <button class="paper-filter is-active" type="button" data-topic="all">All</button>
+                        <button class="paper-filter" type="button" data-topic="ai4math">AI4Math</button>
+                        <button class="paper-filter" type="button" data-topic="ai4science">AI4Science</button>
+                        <button class="paper-filter" type="button" data-topic="lean">Lean</button>
+                        <button class="paper-filter" type="button" data-topic="benchmarking">Benchmarking</button>
+                        <button class="paper-filter" type="button" data-topic="verified-ml">Verified ML</button>
+                        <button class="paper-filter" type="button" data-topic="program-synthesis">Program synthesis</button>
+                    </div>
+                </div>
+                <div id="paperList" class="content home-papers" style="font-size: 115%">
+                    <article class="paper-item" data-topic="ai4math lean verified-ml workshop" data-search="TorchLean Formalizing Neural Networks in Lean Robert Joseph George Jennifer Cruden Will Adkisson Xiangru Zhong Huan Zhang Anima Anandkumar ICML 2026 AI4Math Workshop Spotlight verified ml lean">
+                        <div class="paper-venue">ICML AI4Math 2026 Spotlight</div>
+                        <div class="paper-title">TorchLean: Formalizing Neural Networks in Lean</div>
+                        <div class="paper-authors">Robert Joseph George, Jennifer Cruden, Will Adkisson, Xiangru Zhong, Huan Zhang, Anima Anandkumar.</div>
+                        <div class="paper-tags">AI4Math · Lean · Verified ML</div>
+                        <div class="paper-links"><a target="_blank" href="https://ai4math2026.github.io/">Workshop</a></div>
+                    </article>
+
+                    <article class="paper-item" data-topic="ai4math lean program-synthesis workshop" data-search="BRIDGE Building Representations in Domain-Guided Verified Program Synthesis Robert Joseph George Carson Eisenach Udaya Ghai Dominique Perrault-Joncas Anima Anandkumar Dean Foster ICML 2026 AI4Math Workshop program synthesis lean">
+                        <div class="paper-venue">ICML AI4Math 2026 Workshop</div>
+                        <div class="paper-title">BRIDGE: Building Representations in Domain-Guided Verified Program Synthesis</div>
+                        <div class="paper-authors">Robert Joseph George, Carson Eisenach, Udaya Ghai, Dominique Perrault-Joncas, Anima Anandkumar, Dean Foster.</div>
+                        <div class="paper-tags">AI4Math · Program synthesis · Lean</div>
+                        <div class="paper-links"><a target="_blank" href="https://ai4math2026.github.io/">Workshop</a></div>
+                    </article>
+
+                    <article class="paper-item" data-topic="ai4math lean benchmarking formalization workshop" data-search="ITPEval Benchmarking Formal Translation Across Interactive Theorem Provers Jiayi Wu Robert Joseph George Anima Anandkumar ICML 2026 AI4Math Workshop Poster benchmarking formalization lean">
+                        <div class="paper-venue">ICML AI4Math 2026 Poster</div>
+                        <div class="paper-title">ITPEval: Benchmarking Formal Translation Across Interactive Theorem Provers</div>
+                        <div class="paper-authors">Jiayi Wu, Robert Joseph George, Anima Anandkumar.</div>
+                        <div class="paper-tags">AI4Math · Benchmarking · Formalization</div>
+                        <div class="paper-links"><a target="_blank" href="https://ai4math2026.github.io/">Workshop</a></div>
+                    </article>
+
+                    <article class="paper-item" data-topic="ai4science lean benchmarking workshop" data-search="QuantumLean-Bench Unified Benchmark Informal Formal Quantum Reasoning Isha Goswami Anushka Paulchoudhury Robert Joseph George Anima Anandkumar ICML 2026 AI4Physics Workshop AI4Science benchmarking lean quantum">
+                        <div class="paper-venue">ICML AI4Physics 2026 Workshop</div>
+                        <div class="paper-title">QuantumLean-Bench: A Unified Benchmark for Informal and Formal Quantum Reasoning</div>
+                        <div class="paper-authors">Isha Goswami, Anushka Paulchoudhury, Robert Joseph George, Anima Anandkumar.</div>
+                        <div class="paper-tags">AI4Science · Benchmarking · Lean</div>
+                        <div class="paper-links"><a target="_blank" href="https://ai4physics-workshop.github.io/">Workshop</a></div>
+                    </article>
+
+                    <article class="paper-item" data-topic="ai4math formalization workshop" data-search="Mathematical Discovery and Formalization Towards the AC Conjecture Caroline Zhang Aaron Zhao Robert Joseph George Sergei Gukov Anima Anandkumar NeurIPS Mathematical Reasoning and AI 2025 formalization AI4Math">
+                        <div class="paper-venue">NeurIPS MATH-AI 2025</div>
+                        <div class="paper-title">Mathematical Discovery and Formalization Towards the AC Conjecture</div>
+                        <div class="paper-authors">Caroline Zhang, Aaron Zhao, Robert Joseph George, Sergei Gukov, Anima Anandkumar.</div>
+                        <div class="paper-tags">AI4Math · Formalization</div>
+                        <div class="paper-links"><a target="_blank" href="https://neurips.cc/virtual/2025/workshop/109565">Workshop</a></div>
+                    </article>
+
+                    <article class="paper-item" data-topic="ai4math lean theorem-proving workshop" data-search="LeanDojo-v2 Comprehensive Library AI-Assisted Theorem Proving Lean Ryan Hsiang Will Adkisson Robert Joseph George Anima Anandkumar NeurIPS Mathematical Reasoning and AI 2025 theorem proving">
+                        <div class="paper-venue">NeurIPS MATH-AI 2025</div>
+                        <div class="paper-title">LeanDojo-v2: A Comprehensive Library for AI-Assisted Theorem Proving in Lean</div>
+                        <div class="paper-authors">Ryan Hsiang, Will Adkisson, Robert Joseph George, Anima Anandkumar.</div>
+                        <div class="paper-tags">AI4Math · Lean · Theorem proving</div>
+                        <div class="paper-links"><a target="_blank" href="https://neurips.cc/virtual/2025/workshop/109565">Workshop</a></div>
+                    </article>
+
+                    <article class="paper-item" data-topic="ai4math lean theorem-proving journal" data-search="LeanProgress Guiding Search Neural Theorem Proving Proof Progress Prediction Robert Joseph George Suozhi Huang Anima Anandkumar TMLR 2025 AI4Math Lean theorem proving">
+                        <div class="paper-venue">TMLR 2025</div>
+                        <div class="paper-title">LeanProgress: Guiding Search for Neural Theorem Proving via Proof Progress Prediction</div>
+                        <div class="paper-authors">Robert Joseph George, Suozhi Huang, Anima Anandkumar et al.</div>
+                        <div class="paper-tags">AI4Math · Lean · Theorem proving</div>
+                        <div class="paper-links"><a target="_blank" href="https://arxiv.org/abs/2502.17925">Paper</a></div>
+                    </article>
+
+                    <article class="paper-item" data-topic="ai4math lean theorem-proving conference" data-search="LeanAgent Lifelong Learning Formal Theorem Proving Adarsh Kumarappan Mo Tiwari Peiyang Song Robert Joseph George Chaowei Xiao Anima Anandkumar ICLR 2025 AI4Math Lean theorem proving">
+                        <div class="paper-venue">ICLR 2025</div>
+                        <div class="paper-title">LeanAgent: Lifelong Learning for Formal Theorem Proving</div>
+                        <div class="paper-authors">Adarsh Kumarappan, Mo Tiwari, Peiyang Song, Robert Joseph George, Chaowei Xiao, Anima Anandkumar.</div>
+                        <div class="paper-tags">AI4Math · Lean · Theorem proving</div>
+                        <div class="paper-links"><a target="_blank" href="https://arxiv.org/abs/2410.06209">Paper</a></div>
+                    </article>
+
+                    <article class="paper-item" data-topic="ai4math lean theorem-proving conference" data-search="Lean Copilot Large Language Models Copilots Theorem Proving Lean Peiyang Song Kaiyu Yang Anima Anandkumar NeuS 2025 AI4Math">
+                        <div class="paper-venue">NeuS 2025</div>
+                        <div class="paper-title">Lean Copilot: Large Language Models as Copilots for Theorem Proving in Lean</div>
+                        <div class="paper-authors">Peiyang Song, Kaiyu Yang, Anima Anandkumar.</div>
+                        <div class="paper-tags">AI4Math · Lean · Theorem proving</div>
+                        <div class="paper-links"><a target="_blank" href="https://arxiv.org/abs/2404.12534">Paper</a></div>
+                    </article>
+
+                    <article class="paper-item" data-topic="ai4math lean theorem-proving conference" data-search="LeanDojo Theorem Proving Retrieval-Augmented Language Models Kaiyu Yang Aidan Swope Alex Gu Rahul Chalamala Peiyang Song Shixing Yu Saad Godil Ryan Prenger Anima Anandkumar NeurIPS 2023 AI4Math Lean">
+                        <div class="paper-venue">NeurIPS 2023</div>
+                        <div class="paper-title">LeanDojo: Theorem Proving with Retrieval-Augmented Language Models</div>
+                        <div class="paper-authors">Kaiyu Yang, Aidan Swope, Alex Gu, Rahul Chalamala, Peiyang Song, Shixing Yu, Saad Godil, Ryan Prenger, Anima Anandkumar.</div>
+                        <div class="paper-tags">AI4Math · Lean · Theorem proving</div>
+                        <div class="paper-links"><a target="_blank" href="https://arxiv.org/abs/2306.15626">Paper</a></div>
+                    </article>
+
+                    <p id="paperEmpty" class="paper-empty">No papers match the current search.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="section">
-    <div class="container is-max-widescreen">
-        <div class="rows">
-            <div class="rows is-centered ">
-                <div class="row is-full-width">
-	                    <h2 class="title is-3"><span class="dvima">Papers</span></h2>
-	                    <div class="content" style="font-size: 125%">
-                        <p><strong>TorchLean: Formalizing Neural Networks in Lean</strong><br>
-                        Robert Joseph George, Jennifer Cruden, Will Adkisson, Xiangru Zhong, Huan Zhang, Anima Anandkumar<br>
-                        <em>arXiv preprint, 2026</em><br>
-                        <a target="_blank" href="https://arxiv.org/abs/2602.22631">arXiv:2602.22631</a> ·
-                        <a target="_blank" href="https://github.com/lean-dojo/TorchLean">Code</a></p>
-	                        
-	                        <p><strong>BRIDGE: Building Representations in Domain-Guided Verified Program Synthesis</strong><br>
-	                        Robert Joseph George, Carson Eisenach, Udaya Ghai, Dominique Perrault-Joncas, Anima Anandkumar, Dean Foster<br>
-	                        <em>arXiv preprint, 2026</em><br>
-	                        <a target="_blank" href="https://arxiv.org/abs/2511.21104">arXiv:2511.21104</a></p>
-                        
-                        <p><strong>Mathematical Discovery and Formalization Towards the AC Conjecture</strong><br>
-                        Caroline Zhang, Aaron Zhao, Robert Joseph George, Sergei Gukov, Anima Anandkumar<br>
-                        <em>NeurIPS Mathematical Reasoning and AI, 2025</em><br>
-                        <a target="_blank" href="https://neurips.cc/virtual/2025/workshop/109565">NeurIPS Workshop</a></p>
-                        
-                        <p><strong>LeanDojo-v2: A Comprehensive Library for AI-Assisted Theorem Proving in Lean</strong><br>
-                        Ryan Hsiang, Will Adkisson, Robert Joseph George, Anima Anandkumar<br>
-                        <em>NeurIPS Mathematical Reasoning and AI, 2025</em><br>
-                        <a target="_blank" href="https://neurips.cc/virtual/2025/workshop/109565">NeurIPS Workshop</a></p>
-                        
-                        <p><strong>LeanProgress: Guiding Search for Neural Theorem Proving via Proof Progress Prediction</strong><br>
-                        Robert Joseph George, Suozhi Huang, Anima Anandkumar et al.<br>
-                        <em>Transactions on Machine Learning Research (TMLR), 2025</em><br>
-                        <a target="_blank" href="https://arxiv.org/abs/2502.17925">arXiv:2502.17925</a></p>
-                        
-                        <p><strong>LeanAgent: Lifelong Learning for Formal Theorem Proving</strong><br>
-                        Adarsh Kumarappan, Mo Tiwari, Peiyang Song, Robert Joseph George, Chaowei Xiao, Anima Anandkumar<br>
-                        <em>International Conference on Learning Representations (ICLR) 2025</em><br>
-                        <a target="_blank" href="https://arxiv.org/abs/2410.06209">arXiv:2410.06209</a></p>
-                        
-                        <p><strong>Lean Copilot: Large Language Models as Copilots for Theorem Proving in Lean</strong><br>
-                        Peiyang Song, Kaiyu Yang, Anima Anandkumar<br>
-                        <em>International Conference on Neuro-symbolic Systems (NeuS) 2025</em><br>
-                        <a target="_blank" href="https://arxiv.org/abs/2404.12534">arXiv:2404.12534</a></p>
-                        
-                        <p><strong>LeanDojo: Theorem Proving with Retrieval-Augmented Language Models</strong><br>
-                        Kaiyu Yang, Aidan Swope, Alex Gu, Rahul Chalamala, Peiyang Song, Shixing Yu, Saad Godil, Ryan Prenger, Anima Anandkumar<br>
-                        <em>Neural Information Processing Systems (NeurIPS) 2023</em><br>
-                        <a target="_blank" href="https://arxiv.org/abs/2306.15626">arXiv:2306.15626</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeToggle = document.getElementById('themeToggle');
+        const search = document.getElementById('paperSearch');
+        const filters = Array.prototype.slice.call(document.querySelectorAll('.paper-filter'));
+        const papers = Array.prototype.slice.call(document.querySelectorAll('.paper-item'));
+        const empty = document.getElementById('paperEmpty');
+        let activeTopic = 'all';
+
+        const setDarkMode = (enabled) => {
+            document.body.classList.toggle('dark-mode', enabled);
+            themeToggle.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+            themeToggle.querySelector('.icon i').className = enabled ? 'fas fa-sun' : 'fas fa-moon';
+            themeToggle.querySelector('span:last-child').textContent = enabled ? 'Light mode' : 'Dark mode';
+        };
+
+        const applyFilters = () => {
+            const query = search.value.trim().toLowerCase();
+            let visible = 0;
+            papers.forEach((paper) => {
+                const topics = paper.dataset.topic || '';
+                const haystack = `${paper.dataset.search || ''} ${paper.textContent}`.toLowerCase();
+                const topicMatch = activeTopic === 'all' || topics.split(/\s+/).includes(activeTopic);
+                const searchMatch = !query || haystack.includes(query);
+                const show = topicMatch && searchMatch;
+                paper.style.display = show ? '' : 'none';
+                if (show) visible += 1;
+            });
+            empty.style.display = visible ? 'none' : 'block';
+        };
+
+        filters.forEach((button) => {
+            button.addEventListener('click', () => {
+                activeTopic = button.dataset.topic;
+                filters.forEach((filter) => filter.classList.toggle('is-active', filter === button));
+                applyFilters();
+            });
+        });
+
+        search.addEventListener('input', applyFilters);
+        themeToggle.addEventListener('click', () => {
+            setDarkMode(!document.body.classList.contains('dark-mode'));
+        });
+    });
+</script>
 
 <footer class="footer">
     <div class="container">

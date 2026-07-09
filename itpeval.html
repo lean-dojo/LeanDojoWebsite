@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LeanIDE: Integrated Development Environment for Lean</title>
+    <title>ITPEval: Benchmarking Formal Translation Across Interactive Theorem Provers</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -59,7 +59,7 @@
             <span aria-hidden="true"></span>
         </a>
     </div>
-    
+
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
             <a class="navbar-item" href="index.html">
@@ -77,7 +77,7 @@
             <a class="navbar-item" href="leanprogress.html">
                 LeanProgress
             </a>
-            <a class="navbar-item is-active" href="leanide.html">
+            <a class="navbar-item" href="leanide.html">
                 LeanIDE
             </a>
             <a class="navbar-item" href="torchlean.html">
@@ -86,7 +86,7 @@
             <a class="navbar-item" href="bridge.html">
                 BRIDGE
             </a>
-            <a class="navbar-item" href="itpeval.html">
+            <a class="navbar-item is-active" href="itpeval.html">
                 ITPEval
             </a>
             <a class="navbar-item" href="quantumlean.html">
@@ -101,36 +101,32 @@
         <div class="container is-max-desktop">
             <div class="columns is-centered">
                 <div class="column has-text-centered">
-                    <h1 class="title is-1 publication-title">LeanIDE - IDE for Lean4</h1>
+                    <h1 class="title is-1 publication-title">ITPEval: Benchmarking Formal Translation Across Interactive Theorem Provers</h1>
+
                     <div class="is-size-5 publication-authors">
+                        <span class="author-block">Jiayi Wu<sup>1</sup>,</span>
                         <span class="author-block">
-                            <a href="#">Will Adkisson</a><sup>1</sup>,</span>
-                        <span class="author-block">
-                            <a href="#">Ryan Hsiang</a><sup>2</sup>,</span>
-                        <span class="author-block">
-                            <a href="#">Robert Joseph George</a><sup>2</sup>,</span>
-                        <span class="author-block">
-                            <a href="#">Anima Anandkumar</a><sup>2</sup></span>
+                            <a target="_blank" href="https://www.robertj1.com/">Robert Joseph George</a> <a href="mailto:rgeorge@caltech.edu"><i class="fas fa-envelope"></i></a><sup>2</sup>,</span>
+                        <span class="author-block"><a target="_blank" href="http://tensorlab.cms.caltech.edu/users/anima/">Anima Anandkumar</a><sup>2</sup></span>
                     </div>
 
                     <div class="is-size-5 publication-authors">
-                        <span class="author-block"><sup>1</sup>Washington University</span><br>
+                        <span class="author-block"><sup>1</sup>Brown University; </span>
                         <span class="author-block"><sup>2</sup>California Institute of Technology</span>
                     </div>
 
                     <div class="is-size-5 publication-authors">
-                        <span class="author-block"><strong>Published as part of:</strong> LeanDojo-v2, NeurIPS Mathematical Reasoning and AI, 2025</span>
+                        <span class="author-block"><strong>ICML 2026 AI4Math Workshop Poster</strong></span>
                     </div>
 
                     <div class="column has-text-centered">
                         <div class="publication-links">
                             <span class="link-block">
-                                <a target="_blank" href="https://github.com/lean-dojo/LeanDojo-v2"
-                                class="external-link button is-normal is-rounded is-dark">
+                                <a href="https://ai4math2026.github.io/" class="external-link button is-normal is-rounded is-dark">
                                 <span class="icon">
-                                    <i class="fab fa-github"></i>
+                                    <i class="fas fa-users"></i>
                                 </span>
-                                <span>Code</span>
+                                <span>Workshop</span>
                                 </a>
                             </span>
                         </div>
@@ -146,30 +142,29 @@
         <div class="rows">
             <div class="rows is-centered">
                 <div class="row is-full-width">
-                    <h2 class="title is-3"><span class="lean-infer">About LeanIDE</span></h2>
-                    <p style="font-size: 125%">LeanIDE is the first IDE for Lean. We hope people contribute and add more features to make it better for everyone.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section">
-    <div class="container is-max-widescreen">
-        <div class="rows">
-            <div class="rows is-centered">
-                <div class="row is-full-width">
-                    <h2 class="title is-3"><span class="lean-infer">LeanIDE Demo</span></h2>
-                    <div class="columns is-centered">
-                        <div class="column is-8">
-                            <video controls>
-                                <source src="images/leanide.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
+                    <h2 class="title is-3"><span class="lean-infer">Abstract</span></h2>
+                    <p style="font-size: 125%">Formal theorem proving has emerged as a frontier challenge for machine intelligence, but existing benchmarks largely evaluate isolated proof search or single-prover theorem proving. ITPEval evaluates automated formal proof translation across four major interactive theorem provers spanning two logical foundations: Lean 4, Rocq/Coq, Isabelle/HOL, and HOL Light. The benchmark contains 390 aligned files with more than 1,700 theorems and lemmas, organized into controlled and ecosystem tiers, and evaluates both statement translation and proof translation through execution-based verification in the target prover.</p>
+                    <br />
+                    <img src="images/itpeval_overview.jpg" class="interpolation-image" alt="ITPEval benchmark overview" style="display: block; margin-left: auto; margin-right: auto; width: 96%;"/>
+                    <br />
+                    <div class="columns is-variable is-3" style="font-size: 115%;">
+                        <div class="column has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; margin: 0.25rem;">
+                            <p class="title is-5">Lean 4</p>
+                            <p>Dependent type theory and Mathlib-style formalization.</p>
+                        </div>
+                        <div class="column has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; margin: 0.25rem;">
+                            <p class="title is-5">Rocq/Coq</p>
+                            <p>Calculus of inductive constructions with tactic proof scripts.</p>
+                        </div>
+                        <div class="column has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; margin: 0.25rem;">
+                            <p class="title is-5">Isabelle/HOL</p>
+                            <p>Higher-order logic, locales, and structured proof idioms.</p>
+                        </div>
+                        <div class="column has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; margin: 0.25rem;">
+                            <p class="title is-5">HOL Light</p>
+                            <p>Higher-order logic with OCaml theorem-proving scripts.</p>
                         </div>
                     </div>
-                    <br />
-                    <p style="font-size: 125%; text-align: center;">Interactive demonstration of LeanIDE's integrated development environment for formal mathematics.</p>
                 </div>
             </div>
         </div>
@@ -181,10 +176,29 @@
         <div class="rows">
             <div class="rows is-centered">
                 <div class="row is-full-width">
-                    <h2 class="title is-3"><span class="dvima">Features</span></h2>
-                    <div class="content">
-                        <p style="font-size: 125%">LeanIDE includes all the features in LeanDojo-v2: repository tracing, lifelong dataset management, retrieval-augmented agents, Hugging Face fine-tuning, external inference APIs, and progress prediction.</p>
+                    <h2 class="title is-3"><span class="dvima">Benchmark Design</span></h2>
+                    <div class="content" style="font-size: 125%">
+                        <ul>
+                            <li>Aligned theorem-prover files across Lean 4, Rocq/Coq, Isabelle/HOL, and HOL Light.</li>
+                            <li>Statement-translation and proof-translation tasks with directed source-to-target prover pairs.</li>
+                            <li>Coverage of controlled, self-contained examples and library-dependent formalizations.</li>
+                            <li>Execution-based scoring: a translation succeeds only when the target theorem prover accepts the generated file.</li>
+                            <li>Released infrastructure for evaluating prover interoperability beyond one-language benchmarks.</li>
+                        </ul>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Why It Matters</span></h2>
+                    <p style="font-size: 125%">Modern formal mathematics is distributed across proof assistants with different logical foundations, libraries, and proof idioms. ITPEval turns cross-prover translation into a concrete evaluation problem: can an AI system carry a theorem or proof from one ecosystem into another while preserving the mathematical content well enough for machine checking?</p>
                 </div>
             </div>
         </div>
