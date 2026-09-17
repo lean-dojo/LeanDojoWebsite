@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FloatLib: Verified Floating-Point Arithmetic in Lean</title>
+    <meta name="description" content="FloatLib is an open-source Lean library for verified arbitrary-precision floating-point arithmetic, custom formats and rounding rules, and efficient certified software backends.">
+    <link rel="canonical" href="https://leandojo.org/floatlib.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="FloatLib: Verified Floating-Point Arithmetic in Lean">
+    <meta property="og:description" content="Arbitrary precision, custom formats, and fast software backends with Lean proofs connecting execution to the specification.">
+    <meta property="og:url" content="https://leandojo.org/floatlib.html">
+    <meta property="og:image" content="https://leandojo.org/images/floatlib-social.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="FloatLib: verified arbitrary-precision arithmetic in Lean. Custom formats, rounding proofs, and certified software backends.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FloatLib: Verified Floating-Point Arithmetic in Lean">
+    <meta name="twitter:description" content="Arbitrary precision, custom formats, and fast software backends with Lean proofs connecting execution to the specification.">
+    <meta name="twitter:image" content="https://leandojo.org/images/floatlib-social.png">
+    <meta name="twitter:image:alt" content="FloatLib: verified arbitrary-precision arithmetic in Lean. Custom formats, rounding proofs, and certified software backends.">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="./static/css/floatlib.css">
+</head>
+<body class="floatlib-page">
+<a class="floatlib-skip" href="#main">Skip to content</a>
+<nav class="navbar is-light" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="index.html"><strong>LeanDojo</strong></a>
+        <button class="navbar-burger" type="button" aria-label="Open menu"
+                aria-expanded="false" aria-controls="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </button>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="index.html">Home</a>
+            <a class="navbar-item" href="leandojo.html">LeanDojo</a>
+            <a class="navbar-item" href="leanagent.html">LeanAgent</a>
+            <a class="navbar-item" href="leancopilot.html">LeanCopilot</a>
+            <a class="navbar-item" href="leanprogress.html">LeanProgress</a>
+            <a class="navbar-item" href="leanide.html">LeanIDE</a>
+            <a class="navbar-item" href="torchlean.html">TorchLean</a>
+            <a class="navbar-item is-active" href="floatlib.html" aria-current="page">FloatLib</a>
+            <a class="navbar-item" href="bridge.html">BRIDGE</a>
+            <a class="navbar-item" href="itpeval.html">ITPEval</a>
+            <a class="navbar-item" href="quantumlean.html">QuantumLean-Bench</a>
+        </div>
+    </div>
+</nav>
+
+<main id="main">
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop has-text-centered">
+                <div class="floatlib-heading">
+                    <img src="images/floatlib-logo.png" alt="FloatLib" width="112" height="97">
+                    <h1 class="title is-1 publication-title">Verified Floating-Point Arithmetic in Lean</h1>
+                </div>
+                <div class="is-size-5 publication-authors floatlib-author-names">
+                    <span class="author-block"><a href="https://www.robertj1.com/">Robert Joseph George</a><sup>1,*</sup>,</span>
+                    <span class="author-block">Will Adkisson<sup>2,*</sup>,</span>
+                    <span class="author-block"><a href="https://www.cms.caltech.edu/people/anima">Anima Anandkumar</a><sup>1</sup></span>
+                </div>
+                <div class="publication-authors floatlib-affiliations">
+                    <span class="author-block"><sup>1</sup>California Institute of Technology</span>
+                    <span class="author-block"><sup>2</sup>Washington University in St. Louis</span>
+                </div>
+                <p class="floatlib-credit">* Equal contribution</p>
+                <div class="publication-links">
+                    <span class="link-block"><a class="button is-normal is-rounded is-dark" href="papers/FloatLib.pdf">Paper</a></span>
+                    <span class="link-block"><a class="button is-normal is-rounded is-dark" href="https://github.com/lean-dojo/FloatLib">Code</a></span>
+                    <span class="link-block"><a class="button is-normal is-rounded is-dark" href="https://lean-dojo.github.io/FloatLib/">Guide</a></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section floatlib-section" aria-labelledby="overview">
+        <div class="container is-max-desktop content">
+            <h2 id="overview" class="title is-3">Overview</h2>
+            <p>FloatLib is a verified arbitrary-precision floating-point arithmetic library
+                in Lean. It supports IEEE binary and decimal, arbitrary-width posits, P3109,
+                small ML formats, and user-defined formats and rounding rules. Each certified
+                software backend is proved equal to its encoded specification, including
+                signed zeros and exceptional values. We built FloatLib to support verified
+                machine learning and numerical software with efficient arithmetic.</p>
+            <figure class="floatlib-overview">
+                <picture>
+                    <source media="(max-width: 600px)" srcset="images/floatlib-execution-mobile.svg">
+                    <img src="images/floatlib-execution.svg" width="960" height="350"
+                         alt="Operands in a chosen format pass either through an exact specification or through a certified software backend. A Lean proof establishes that both paths return the same encoded result.">
+                </picture>
+                <figcaption>The specification states the result; the backend computes it.
+                    A Lean proof connects the two paths for every input.</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section class="section floatlib-section" aria-labelledby="contributions">
+        <div class="container is-max-desktop content">
+            <h2 id="contributions" class="title is-3">Key contributions</h2>
+            <ul class="floatlib-features">
+                <li><strong>Custom formats and rounding rules.</strong> Choose exponent and
+                    fraction widths, bias, and encoding policies, or define a new representation.
+                    IEEE binary and decimal, small ML formats, arbitrary-width posits, and P3109
+                    share interfaces for arithmetic and mixed-format operations.</li>
+                <li><strong>Numerical proofs connected to code.</strong> Correct rounding,
+                    half-ulp error bounds, and Sterbenz's lemma describe the arithmetic a program
+                    executes. Posits also have exact quire accumulation within capacity and
+                    real-rounding proofs for roots, powers, exponentials, and logarithms.</li>
+                <li><strong>Signed zeros, NaNs, infinities, and exception flags.</strong>
+                    The IEEE model makes their encodings and behavior explicit. Proofs about
+                    complete result words preserve distinctions that equality over the reals
+                    cannot express.</li>
+                <li><strong>Fast certified execution.</strong> The planner chooses among
+                    lookup tables, machine-word kernels, and limb algorithms. Every certified
+                    choice proves agreement with the same specification; Lean erases proof
+                    terms during compilation.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section floatlib-section" aria-labelledby="evaluation">
+        <div class="container is-max-desktop content">
+            <h2 id="evaluation" class="title is-3">Performance</h2>
+            <p>We benchmarked six arithmetic operations from 2 to 4,096 bits. The
+                <a href="https://lean-dojo.github.io/FloatLib/#/chapter/performance">guide</a>
+                gives all timings and the separate P3109 comparison.</p>
+            <figure class="floatlib-performance">
+                <a href="images/floatlib-performance.png" aria-label="Open the full-size arithmetic performance plot">
+                    <img src="images/floatlib-performance.png" width="3100" height="2000"
+                         alt="Six plots compare addition, subtraction, multiplication, division, square root, and fused multiply-add. Blue squares show FloatLib binary and green circles show FloatLib posit. FloatLib outperforms Universal at wide posit widths, while MPFR remains faster for binary arithmetic.">
+                </a>
+                <figcaption>Median nanoseconds per operation across encoded widths, with
+                    5th–95th percentile bands over nine trials on an Intel Xeon Platinum 8488C.
+                    Both axes are logarithmic; lower is faster.
+                    <a href="images/floatlib-performance.png">Full-size plot</a> ·
+                    <a href="https://lean-dojo.github.io/FloatLib/#/chapter/performance/how-we-ran-the-external-implementations">Comparison methods and Flocq wrapper details</a>.</figcaption>
+            </figure>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container content has-text-centered">
+        <p>Part of <a href="index.html">LeanDojo</a>.
+            Website template borrowed from <a href="https://vimalabs.github.io/">VIMA</a>.</p>
+    </div>
+</footer>
+<script>
+    const menuButton = document.querySelector('.navbar-burger');
+    const menu = document.getElementById(menuButton.getAttribute('aria-controls'));
+    function setMenu(open) {
+        menuButton.classList.toggle('is-active', open);
+        menu.classList.toggle('is-active', open);
+        menuButton.setAttribute('aria-expanded', String(open));
+        menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+    menuButton.addEventListener('click', () => {
+        setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
+            setMenu(false);
+            menuButton.focus();
+        }
+    });
+</script>
+</body>
+</html>

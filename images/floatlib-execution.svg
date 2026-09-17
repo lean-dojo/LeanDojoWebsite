@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="350" viewBox="0 0 960 350" role="img" aria-labelledby="title description">
+  <title id="title">An operation, two paths, the same encoded result</title>
+  <desc id="description">Operands in a chosen format go through either the mathematical specification or a certified software backend. A Lean proof establishes equality of the encoded outputs, including signed zeros and exceptional values.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse">
+      <path d="M0 0L8 4L0 8" fill="none" stroke="#54718d" stroke-width="1.5"/>
+    </marker>
+  </defs>
+  <rect width="960" height="350" rx="12" fill="#f7f9fc"/>
+  <g fill="none" stroke="#54718d" stroke-width="2" marker-end="url(#arrow)">
+    <path d="M218 174H265V87H309"/>
+    <path d="M265 174V261H309"/>
+    <path d="M662 87H705V174H750"/>
+    <path d="M662 261H705V174"/>
+  </g>
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <rect x="22" y="126" width="196" height="96" rx="8" fill="#e9eff7" stroke="#9aafc5"/>
+    <text x="120" y="164" fill="#173e62" font-size="22" font-weight="700">Your format</text>
+    <text x="120" y="194" fill="#334f68" font-size="19">Operands x, y</text>
+    <rect x="312" y="36" width="350" height="102" rx="8" fill="#edf3fa" stroke="#9aafc5"/>
+    <text x="487" y="73" fill="#173e62" font-size="22" font-weight="700">Specification</text>
+    <text x="487" y="103" fill="#334f68" font-size="18">Exact arithmetic, then rounding;</text>
+    <text x="487" y="125" fill="#334f68" font-size="18">rules for exceptional values</text>
+    <rect x="312" y="210" width="350" height="102" rx="8" fill="#eaf3ee" stroke="#93b6a0"/>
+    <text x="487" y="247" fill="#27573d" font-size="22" font-weight="700">Certified software backend</text>
+    <text x="487" y="279" fill="#365d45" font-size="18">Tables, word kernels, limb algorithms</text>
+    <text x="487" y="181" fill="#173e62" font-size="21" font-weight="700">Lean proof: run = spec</text>
+    <rect x="754" y="126" width="184" height="96" rx="8" fill="#e9eff7" stroke="#9aafc5"/>
+    <text x="846" y="165" fill="#173e62" font-size="21" font-weight="700">Same result</text>
+    <text x="846" y="194" fill="#334f68" font-size="18">Complete encoding</text>
+  </g>
+</svg>

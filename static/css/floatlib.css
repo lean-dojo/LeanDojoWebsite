@@ -1,0 +1,143 @@
+.floatlib-page {
+    color: #2b2f36;
+}
+
+.floatlib-page .navbar-burger {
+    border: 0;
+    background: transparent;
+}
+
+.floatlib-page .hero-body {
+    padding-bottom: 1.5rem;
+}
+
+.floatlib-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-bottom: 0.7rem;
+}
+
+.floatlib-heading img {
+    flex: 0 0 auto;
+    width: 112px;
+    height: auto;
+}
+
+.floatlib-heading .publication-title {
+    margin: 0;
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    line-height: 1.15;
+}
+
+.floatlib-page .publication-authors,
+.floatlib-page .publication-authors a {
+    color: #2b2f36 !important;
+}
+
+.floatlib-page .publication-authors a:hover {
+    color: #24567f !important;
+    text-decoration: underline;
+}
+
+.floatlib-author-names {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.15rem;
+    line-height: 1.35;
+}
+
+.floatlib-affiliations {
+    margin-top: 0.35rem;
+}
+
+.floatlib-affiliations .author-block + .author-block {
+    margin-left: 0.65rem;
+}
+
+.floatlib-credit {
+    margin: 0.4rem 0 1rem;
+    color: #596574;
+    font-size: 0.9rem;
+}
+
+.floatlib-section {
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
+}
+
+.floatlib-section .content {
+    font-size: 1.2rem;
+    line-height: 1.65;
+}
+
+.floatlib-section .content h2 {
+    margin-bottom: 1rem;
+}
+
+.floatlib-section .content li + li {
+    margin-top: 0.8rem;
+}
+
+.floatlib-section .content figure {
+    margin: 2rem 0 0;
+}
+
+.floatlib-overview img,
+.floatlib-performance img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.floatlib-overview figcaption,
+.floatlib-performance figcaption {
+    font-size: 1rem;
+    color: #596574;
+    line-height: 1.5;
+    margin-top: 0.75rem;
+}
+
+.floatlib-section .content .floatlib-performance {
+    margin-bottom: 2rem;
+}
+
+.floatlib-page :focus-visible {
+    outline: 3px solid #24567f;
+    outline-offset: 3px;
+}
+
+.floatlib-skip {
+    position: absolute;
+    top: -5rem;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+    background: #ffffff;
+    color: #24567f;
+}
+
+.floatlib-skip:focus {
+    top: 0.5rem;
+}
+
+@media screen and (max-width: 600px) {
+    .floatlib-heading {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .floatlib-heading img {
+        width: 96px;
+    }
+
+    .floatlib-page .hero-body {
+        padding: 2rem 1.5rem 1rem;
+    }
+
+    .floatlib-section .content {
+        font-size: 1.08rem;
+    }
+}

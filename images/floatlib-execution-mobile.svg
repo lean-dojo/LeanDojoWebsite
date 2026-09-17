@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="485" viewBox="0 0 440 485" role="img" aria-labelledby="title description">
+  <title id="title">An operation, two paths, the same encoded result</title>
+  <desc id="description">For operands in a chosen format, the specification and certified software backend produce the same encoded result. Lean proves their equality.</desc>
+  <rect width="440" height="485" rx="12" fill="#f7f9fc"/>
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="220" y="39" fill="#173e62" font-size="23" font-weight="700">Your format and operands</text>
+    <path d="M220 54V84" stroke="#54718d" stroke-width="2"/>
+    <path d="M213 77L220 84L227 77" fill="none" stroke="#54718d" stroke-width="2"/>
+    <rect x="25" y="94" width="390" height="101" rx="8" fill="#edf3fa" stroke="#9aafc5"/>
+    <text x="220" y="126" fill="#173e62" font-size="23" font-weight="700">Specification</text>
+    <text x="220" y="155" fill="#334f68" font-size="19">Exact arithmetic, then rounding;</text>
+    <text x="220" y="181" fill="#334f68" font-size="19">rules for exceptional values</text>
+    <text x="220" y="238" fill="#173e62" font-size="23" font-weight="700">Lean proof: run = spec</text>
+    <rect x="25" y="266" width="390" height="100" rx="8" fill="#eaf3ee" stroke="#93b6a0"/>
+    <text x="220" y="299" fill="#27573d" font-size="23" font-weight="700">Certified software backend</text>
+    <text x="220" y="327" fill="#365d45" font-size="19">Tables, word kernels,</text>
+    <text x="220" y="353" fill="#365d45" font-size="19">limb algorithms</text>
+    <text x="220" y="416" fill="#173e62" font-size="23" font-weight="700">Same complete result word</text>
+    <text x="220" y="448" fill="#334f68" font-size="18">Including signed zeros and exceptional values</text>
+  </g>
+</svg>

@@ -90,6 +90,9 @@
             <a class="navbar-item" href="torchlean.html">
                 TorchLean
             </a>
+            <a class="navbar-item" href="floatlib.html">
+                FloatLib
+            </a>
             <a class="navbar-item" href="bridge.html">
                 BRIDGE
             </a>
@@ -143,9 +146,9 @@
         </div>
         <div class="columns is-centered">
             <div class="column is-10">
-                <h2 class="title is-3"><span class="dvima">Papers</span></h2>
+                <h2 class="title is-3"><span class="dvima">Projects and Papers</span></h2>
                 <div class="paper-toolbar">
-                    <input id="paperSearch" class="paper-search" type="search" placeholder="Search papers, authors, venues, topics..." aria-label="Search papers">
+                    <input id="paperSearch" class="paper-search" type="search" placeholder="Search projects, papers, authors, topics..." aria-label="Search projects and papers">
                     <div class="paper-filters" aria-label="Filter papers by topic">
                         <button class="paper-filter is-active" type="button" data-topic="all">All</button>
                         <button class="paper-filter" type="button" data-topic="ai4math">AI4Math</button>
@@ -157,6 +160,14 @@
                     </div>
                 </div>
                 <div id="paperList" class="content home-papers" style="font-size: 115%">
+                    <article class="paper-item" data-topic="ai4science lean verified-ml" data-search="FloatLib Verified Floating-Point Arithmetic in Lean Robert Joseph George Will Adkisson Anima Anandkumar arbitrary precision custom formats rounding IEEE binary decimal posits P3109 numerical verification scientific computing">
+                        <div class="paper-venue">Open-source library</div>
+                        <div class="paper-title">FloatLib: Verified Floating-Point Arithmetic in Lean</div>
+                        <div class="paper-authors">Robert Joseph George, Will Adkisson, Anima Anandkumar.</div>
+                        <div class="paper-tags">AI4Science · Lean · Verified ML</div>
+                        <div class="paper-links"><a href="floatlib.html">Project</a><a href="papers/FloatLib.pdf">Paper</a><a href="https://github.com/lean-dojo/FloatLib">Code</a><a href="https://lean-dojo.github.io/FloatLib/">Guide</a></div>
+                    </article>
+
                     <article class="paper-item" data-topic="ai4math lean verified-ml workshop" data-search="TorchLean Formalizing Neural Networks in Lean Robert Joseph George Jennifer Cruden Will Adkisson Xiangru Zhong Huan Zhang Anima Anandkumar ICML 2026 AI4Math Workshop Spotlight verified ml lean">
                         <div class="paper-venue">ICML AI4Math 2026 Spotlight</div>
                         <div class="paper-title">TorchLean: Formalizing Neural Networks in Lean</div>
@@ -237,7 +248,7 @@
                         <div class="paper-links"><a target="_blank" href="https://arxiv.org/abs/2306.15626">Paper</a></div>
                     </article>
 
-                    <p id="paperEmpty" class="paper-empty">No papers match the current search.</p>
+                    <p id="paperEmpty" class="paper-empty">No projects or papers match the current search.</p>
                 </div>
             </div>
         </div>
