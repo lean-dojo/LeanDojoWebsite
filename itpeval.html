@@ -119,11 +119,22 @@
                     </div>
 
                     <div class="is-size-5 publication-authors">
-                        <span class="author-block"><strong>ICML 2026 AI4Math Workshop Poster</strong></span>
+                        <span class="author-block"><strong>NeurIPS 2026 Evaluations &amp; Datasets Track</strong></span>
+                    </div>
+                    <div class="publication-authors">
+                        <span class="author-block">An earlier version appeared as a poster at the <a target="_blank" href="https://ai4math2026.github.io/">ICML 2026 AI4Math Workshop</a>.</span>
                     </div>
 
                     <div class="column has-text-centered">
                         <div class="publication-links">
+                            <span class="link-block">
+                                <a target="_blank" href="https://arxiv.org/abs/2607.19407" class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="ai ai-arxiv"></i>
+                                </span>
+                                <span>Paper</span>
+                                </a>
+                            </span>
                             <span class="link-block">
                                 <a target="_blank" href="https://github.com/lean-dojo/ITPEval" class="external-link button is-normal is-rounded is-dark">
                                 <span class="icon">
@@ -133,11 +144,11 @@
                                 </a>
                             </span>
                             <span class="link-block">
-                                <a href="https://ai4math2026.github.io/" class="external-link button is-normal is-rounded is-dark">
+                                <a target="_blank" href="https://huggingface.co/datasets/jiayi005/ITPEval" class="external-link button is-normal is-rounded is-dark">
                                 <span class="icon">
-                                    <i class="fas fa-users"></i>
+                                    <i class="fas fa-database"></i>
                                 </span>
-                                <span>Workshop</span>
+                                <span>Dataset</span>
                                 </a>
                             </span>
                         </div>
@@ -154,26 +165,94 @@
             <div class="rows is-centered">
                 <div class="row is-full-width">
                     <h2 class="title is-3"><span class="lean-infer">Abstract</span></h2>
-                    <p style="font-size: 125%">Formal theorem proving has emerged as a frontier challenge for machine intelligence, but existing benchmarks largely evaluate isolated proof search or single-prover theorem proving. ITPEval evaluates automated formal proof translation across four major interactive theorem provers spanning two logical foundations: Lean 4, Rocq/Coq, Isabelle/HOL, and HOL Light. The benchmark contains 390 aligned files with more than 1,700 theorems and lemmas, organized into controlled and ecosystem tiers, and evaluates both statement translation and proof translation through execution-based verification in the target prover.</p>
+                    <p style="font-size: 125%">Formal theorem proving has emerged as a frontier challenge for machine learning, yet the ecosystem is fragmented: proofs remain siloed across incompatible systems, limiting both training data for learning-based provers and the portability of verified results. We present ITPEval, a benchmark for evaluating automated formal statement translation across ten ITPs, with a complementary four-prover proof corpus. Our benchmark comprises 2,634 aligned statement items from eight sources of mathematics and program verification, yielding 26,340 prover records, alongside 74 proof items in Lean 4, Rocq, Isabelle/HOL, and HOL Light. The collection includes axiomatized theories, library and competition mathematics, verification conditions, and program correctness specifications. We release <code>itpeval</code>, a unified multi-ITP verification infrastructure with state-isolated warm backends that preserve per-artifact native checking semantics. We evaluate both statement and proof translation across five frontier and open-weight LLMs on 12 directed translation pairs: statement translation peaks at 29.1% pass@1 and proof translation at 10.5%; controlled theorems reach 29.7% proof pass@1 versus 5.2% for ecosystem-level translations, indicating that library mismatch is the largest observed source of proof-translation failure. In addition to pass@k evaluation, a deterministic Lean 4 BEq check establishes equivalence for 54.0% of verified source-to-Lean 4 miniF2F statement translations, showing that native type-checking alone can substantially overestimate semantic fidelity; an exploratory autoformalization/auto-informalization round-trip study suggests target-dependent verification patterns and possible benefits from multi-ITP context.</p>
                     <br />
-                    <img src="images/itpeval_overview.jpg" class="interpolation-image" alt="ITPEval benchmark overview" style="display: block; margin-left: auto; margin-right: auto; width: 96%;"/>
+                    <img src="images/itpeval_overview.jpg" class="interpolation-image" alt="ITPEval evaluation setting: statement translation, proof translation and an autoformalization round trip across Lean 4, Rocq, Isabelle/HOL and HOL Light" style="display: block; margin-left: auto; margin-right: auto; width: 96%;"/>
+                    <p class="has-text-centered" style="font-size: 105%; margin-top: 0.75rem;"><strong>Figure 1.</strong> The evaluation setting. Models translate statements and proofs among Lean 4, Rocq, Isabelle/HOL and HOL Light, and a translation counts only if the target prover accepts the whole file.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Ten Provers</span></h2>
+                    <p style="font-size: 125%">Every statement item is written in all ten provers, which gives 90 translation directions. The proof corpus covers the first four.</p>
                     <br />
-                    <div class="columns is-variable is-3" style="font-size: 115%;">
-                        <div class="column has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; margin: 0.25rem;">
-                            <p class="title is-5">Lean 4</p>
-                            <p>Dependent type theory and Mathlib-style formalization.</p>
+                    <div class="columns is-multiline is-variable is-3" style="font-size: 110%;">
+                        <div class="column is-one-fifth-desktop is-half-tablet">
+                            <div class="has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; height: 100%;">
+                                <p class="title is-5">Lean 4</p>
+                                <p>Dependent type theory with Mathlib.</p>
+                                <p style="margin-top: 0.5rem; font-size: 85%; color: #4a5568;">statements and proofs</p>
+                            </div>
                         </div>
-                        <div class="column has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; margin: 0.25rem;">
-                            <p class="title is-5">Rocq/Coq</p>
-                            <p>Calculus of inductive constructions with tactic proof scripts.</p>
+                        <div class="column is-one-fifth-desktop is-half-tablet">
+                            <div class="has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; height: 100%;">
+                                <p class="title is-5">Rocq</p>
+                                <p>Calculus of Inductive Constructions with tactic scripts.</p>
+                                <p style="margin-top: 0.5rem; font-size: 85%; color: #4a5568;">statements and proofs</p>
+                            </div>
                         </div>
-                        <div class="column has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; margin: 0.25rem;">
-                            <p class="title is-5">Isabelle/HOL</p>
-                            <p>Higher-order logic, locales, and structured proof idioms.</p>
+                        <div class="column is-one-fifth-desktop is-half-tablet">
+                            <div class="has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; height: 100%;">
+                                <p class="title is-5">Isabelle/HOL</p>
+                                <p>Higher-order logic with structured Isar proofs.</p>
+                                <p style="margin-top: 0.5rem; font-size: 85%; color: #4a5568;">statements and proofs</p>
+                            </div>
                         </div>
-                        <div class="column has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; margin: 0.25rem;">
-                            <p class="title is-5">HOL Light</p>
-                            <p>Higher-order logic with OCaml theorem-proving scripts.</p>
+                        <div class="column is-one-fifth-desktop is-half-tablet">
+                            <div class="has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; height: 100%;">
+                                <p class="title is-5">HOL Light</p>
+                                <p>Higher-order logic on a small kernel, scripted in OCaml.</p>
+                                <p style="margin-top: 0.5rem; font-size: 85%; color: #4a5568;">statements and proofs</p>
+                            </div>
+                        </div>
+                        <div class="column is-one-fifth-desktop is-half-tablet">
+                            <div class="has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; height: 100%;">
+                                <p class="title is-5">HOL4</p>
+                                <p>Higher-order logic, scripted in Standard ML.</p>
+                                <p style="margin-top: 0.5rem; font-size: 85%; color: #4a5568;">statements</p>
+                            </div>
+                        </div>
+                        <div class="column is-one-fifth-desktop is-half-tablet">
+                            <div class="has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; height: 100%;">
+                                <p class="title is-5">ACL2</p>
+                                <p>First-order logic over applicative Common Lisp.</p>
+                                <p style="margin-top: 0.5rem; font-size: 85%; color: #4a5568;">statements</p>
+                            </div>
+                        </div>
+                        <div class="column is-one-fifth-desktop is-half-tablet">
+                            <div class="has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; height: 100%;">
+                                <p class="title is-5">Agda</p>
+                                <p>Dependently typed programming in Martin-L&ouml;f type theory.</p>
+                                <p style="margin-top: 0.5rem; font-size: 85%; color: #4a5568;">statements</p>
+                            </div>
+                        </div>
+                        <div class="column is-one-fifth-desktop is-half-tablet">
+                            <div class="has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; height: 100%;">
+                                <p class="title is-5">Metamath</p>
+                                <p>A minimal substitution checker; set.mm builds ZFC.</p>
+                                <p style="margin-top: 0.5rem; font-size: 85%; color: #4a5568;">statements</p>
+                            </div>
+                        </div>
+                        <div class="column is-one-fifth-desktop is-half-tablet">
+                            <div class="has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; height: 100%;">
+                                <p class="title is-5">Mizar</p>
+                                <p>Tarski-Grothendieck set theory and the Mizar Mathematical Library.</p>
+                                <p style="margin-top: 0.5rem; font-size: 85%; color: #4a5568;">statements</p>
+                            </div>
+                        </div>
+                        <div class="column is-one-fifth-desktop is-half-tablet">
+                            <div class="has-text-centered" style="border: 1px solid #d9dee8; border-radius: 6px; padding: 1rem; height: 100%;">
+                                <p class="title is-5">PVS</p>
+                                <p>Classical higher-order logic with predicate subtypes.</p>
+                                <p style="margin-top: 0.5rem; font-size: 85%; color: #4a5568;">statements</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -190,11 +269,30 @@
                     <h2 class="title is-3"><span class="dvima">Benchmark Design</span></h2>
                     <div class="content" style="font-size: 125%">
                         <ul>
-                            <li>Aligned theorem-prover files across Lean 4, Rocq/Coq, Isabelle/HOL, and HOL Light.</li>
-                            <li>Statement-translation and proof-translation tasks with directed source-to-target prover pairs.</li>
-                            <li>Coverage of controlled, self-contained examples and library-dependent formalizations.</li>
-                            <li>Execution-based scoring: a translation succeeds only when the target theorem prover accepts the generated file.</li>
-                            <li>Released infrastructure for evaluating prover interoperability beyond one-language benchmarks.</li>
+                            <li>2,634 aligned statement items from eight sources, each in all ten provers: 26,340 records.</li>
+                            <li>74 proof items in Lean 4, Rocq, Isabelle/HOL and HOL Light: 296 records and 888 directed proof-translation tasks.</li>
+                            <li>A controlled tier of self-contained, axiomatized files and an ecosystem tier of real library formalizations, where names, APIs and automation differ.</li>
+                            <li>Execution-based scoring: a translation succeeds only when the target prover accepts the generated file. For Lean 4 targets, a BEq check also tests whether the translated statement is equivalent to the reference.</li>
+                            <li>The <code>itpeval</code> package checks all ten provers through one interface, with state-isolated warm backends that keep each prover's native checking semantics.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Key Results</span></h2>
+                    <div class="content" style="font-size: 125%">
+                        <ul>
+                            <li>Across five frontier and open-weight models on 12 directed pairs, statement translation reaches at most 29.1% pass@1 and proof translation 10.5%.</li>
+                            <li>Proofs of controlled theorems succeed at 29.7% pass@1, against 5.2% for ecosystem translations. Library mismatch is the largest observed cause of failure.</li>
+                            <li>Only 54.0% of the source-to-Lean 4 miniF2F statement translations that type-check are provably equivalent to the reference. Type-checking alone overestimates how faithful a translation is.</li>
                         </ul>
                     </div>
                 </div>
@@ -210,6 +308,24 @@
                 <div class="row is-full-width">
                     <h2 class="title is-3"><span class="dvima">Why It Matters</span></h2>
                     <p style="font-size: 125%">Modern formal mathematics is distributed across proof assistants with different logical foundations, libraries, and proof idioms. ITPEval turns cross-prover translation into a concrete evaluation problem: can an AI system carry a theorem or proof from one ecosystem into another while preserving the mathematical content well enough for machine checking?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-widescreen">
+        <div class="rows">
+            <div class="rows is-centered">
+                <div class="row is-full-width">
+                    <h2 class="title is-3"><span class="dvima">Citation</span></h2>
+                    <pre style="font-size: 95%; white-space: pre-wrap;"><code>@inproceedings{wu2026itpeval,
+  title     = {{ITPEval}: Benchmarking Formal Translation Across Interactive Theorem Provers},
+  author    = {Wu, Jiayi and George, Robert Joseph and Anandkumar, Anima},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS), Evaluations and Datasets Track},
+  year      = {2026}
+}</code></pre>
                 </div>
             </div>
         </div>
